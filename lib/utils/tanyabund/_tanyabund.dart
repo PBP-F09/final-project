@@ -1,0 +1,1 @@
+part 'sebuah_function.dart';
