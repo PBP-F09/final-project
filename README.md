@@ -15,6 +15,13 @@ Fitur yang kami kembangkan juga dapat menjembatani kepentingan tenaga kesehatan 
 7. TanyaBund - Fadhlan
 
 ## Alur Pengintegrasian dengan _Web Service_
+1. Mendefinisikan model yang akan digunakan saat pemanggilan web service, beserta method toJson() dan fromJson().
+2. Menambahkan dependensi http pada proyek aplikasi, serta menambahkan potongan kode untuk memperbolehkan akses internet pada aplikasi Flutter di file android/app/src/main/AndroidManifest.xml.
+3. Melakukan fetch data dengan hit endpoint API menggunakan method POST, GET, DELETE, PUT, dan lain-lain yang disediakan dependensi http.
+4. Data yang sudah di-fetch kemudian di-decode menjadi bentuk JSON.
+5. Data dalam bentuk JSON dikonversi menjadi data dalam bentuk sebuah model.
+6. Data dalam bentuk model tersebut ditampilkan pada aplikasi Flutter.
+
 
 ## Persona
 - Admin
