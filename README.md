@@ -1,35 +1,35 @@
 # *HalowBund*
 
 ## Deskripsi Aplikasi
-HaloBund merupakan sebuah website yang dapat membantu ribuan Ibu di seluruh Indonesia mengenai pengetahuan *motherhood* dan juga mengedukasi kesehatan Ibu & Anak di Indonesia. Pada aplikasi ini, Ibu dapat membaca artikel-artikel mengenai pengetahuan keibuan dan juga mengajukan pertanyaan terkait kehamilan dan tumbuh-kembang anak pada forum diskusi dengan berinteraksi dengan dokter spesialis, perawat, atau Ibu lainnya. Selain itu, Ibu juga dapat mencari informasi terkait tempat dan waktu dilaksanakannya kegiatan posyandu dan imunisasi di lingkungan terdekatnya.
+HalowBund merupakan sebuah aplikasi yang dapat membantu ribuan Ibu di seluruh Indonesia mengenai pengetahuan *motherhood* dan juga mengedukasi kesehatan Ibu & Anak di Indonesia. Pada aplikasi ini, Ibu dapat membaca artikel-artikel mengenai pengetahuan keibuan dan juga mengajukan pertanyaan terkait kehamilan dan tumbuh-kembang anak pada forum diskusi dengan berinteraksi dengan dokter spesialis, perawat, atau Ibu lainnya. Selain itu, Ibu juga dapat mencari informasi terkait tempat dan waktu dilaksanakannya kegiatan posyandu dan imunisasi di lingkungan terdekatnya.
 
 Fitur yang kami kembangkan juga dapat menjembatani kepentingan tenaga kesehatan seperti dokter spesialis anak & kandungan serta perawat dalam memberikan informasi yang akurat dengan menjawab pertanyaan-pertanyaan terkait tumbuh-kembang anak yang diberikan oleh Ibu.
 
 ## Daftar Modul
 1. Login dan Register
 2. Home
-3. BacaBund
-4. CatatBund
-5. DiaryBund
-6. PeriksaBund
-7. TanyaBund
+3. BacaBund - Iqbal
+4. CatatBund - Varas
+5. DiaryBund - Mayfa
+6. PeriksaBund - Shafa
+7. TanyaBund - Fadhlan
 
 ## Alur Pengintegrasian dengan _Web Service_
 
 ## Persona
 - Admin
-    - Mengatur database dari website
-    - Melakukan perubahan dan pembaruan fitur pada website
-    - Mengunggah konten artikel pada website
-    - Melihat konten website
+    - Mengatur database 
+    - Melakukan perubahan dan pembaruan fitur pada aplikasi
+    - Mengunggah konten artikel pada aplikasi
+    - Melihat konten aplikasi
 - Masyarakat (Ibu Hamil & Ibu yang Mempunyai Anak)
-    - Melihat konten artikel pada website
+    - Melihat konten artikel pada aplikasi
     - Berinteraksi dengan pengguna (Ibu) lainnya dalam membahas topik-topik yang berkaitan dengan Kehamilan atau Tumbuh-Kembang Anak
     - Memberikan pertanyaan-pertanyaan kepada Dokter Spesialis
-    - Melihat konten website
+    - Melihat konten aplikasi
 - Fasilitas Kesehatan (Dokter Spesialis Kandungan & Anak, Perawat)
     - Menjawab pertanyaan-pertanyaan dari Ibu 
-    - Melihat konten website
+    - Melihat konten aplikasi
 
 ## Anggota Kelompok
 1. Diona Varastika - 2106708255
