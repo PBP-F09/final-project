@@ -42,6 +42,7 @@ Pada fitur ini, pengguna dapat mengajukan pertanyaan dan menjawab pertanyaan sec
 - Fasilitas Kesehatan (Dokter Spesialis Kandungan & Anak, Perawat)
     - Menjawab pertanyaan-pertanyaan dari Ibu 
     - Melihat konten aplikasi
+    - Menambahkan informasi lokasi posyandu dan vaksin
 
 ## Anggota Kelompok
 1. Diona Varastika - 2106708255
