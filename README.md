@@ -8,11 +8,16 @@ Fitur yang kami kembangkan juga dapat menjembatani kepentingan tenaga kesehatan 
 ## Daftar Modul
 1. Login dan Register
 2. Home
-3. BacaBund - Iqbal
-4. CatatBund - Varas
-5. DiaryBund - Mayfa
-6. PeriksaBund - Shafa
-7. TanyaBund - Fadhlan
+3. BacaBund - Iqbal<br>
+Pada fitur ini, pengguna dapat melihat artikel yang telah diupload oleh Admin. Selain itu, Admin juga dapat menambahkan artikel baru. 
+4. CatatBund - Varas<br>
+Pada fitur ini, pengguna dapat mencatat tinggi dan berat badan untuk melihat perkembangan buah hati. Fitur ini juga dilengkapi perhitungan BMI otomatis.
+5. DiaryBund - Mayfa<br>
+Pada fitur ini, pengguna dapat menceritakan dan mendokumentasikan kegiatan sehari-harinya dengan sang anak
+6. PeriksaBund - Shafa<br>
+Pada fitur ini, pengguna dapat melihat informasi mengenai lokasi posyandu atau tempat fasilitas untuk melakukan imunisasi dan vaksin.
+7. TanyaBund - Fadhlan<br>
+Pada fitur ini, pengguna dapat mengajukan pertanyaan dan menjawab pertanyaan secara publik layaknya sebuah forum.
 
 ## Alur Pengintegrasian dengan _Web Service_
 1. Mendefinisikan model yang akan digunakan saat pemanggilan web service, beserta method toJson() dan fromJson().
