@@ -39,6 +39,7 @@ Pada fitur ini, pengguna dapat mengajukan pertanyaan dan menjawab pertanyaan sec
     - Berinteraksi dengan pengguna (Ibu) lainnya dalam membahas topik-topik yang berkaitan dengan Kehamilan atau Tumbuh-Kembang Anak
     - Memberikan pertanyaan-pertanyaan kepada Dokter Spesialis
     - Melihat konten aplikasi
+    - Menggunakan fitur CatatBund (untuk mendokumentasikan tumbuh kembang Anak) dan DiaryBund (untuk mendokumentasikan keseharian Ibu dan Anak)
 - Fasilitas Kesehatan (Dokter Spesialis Kandungan & Anak, Perawat)
     - Menjawab pertanyaan-pertanyaan dari Ibu 
     - Melihat konten aplikasi
