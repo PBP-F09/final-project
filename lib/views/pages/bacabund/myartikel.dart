@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:endterm_project/utils/bacabund/get_artikel.dart';
+import 'package:endterm_project/views/pages/bacabund/artikel_by_id.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,13 +46,24 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
+                String title = snapshot.data[index].title;
+                String body = snapshot.data[index].body;
                 String tanggal = snapshot.data[index].date.substring(0, 10);
+                int author = snapshot.data[index].author;
                 return Card(
-                  child: ListTile(
-                    title: Text(snapshot.data[index].title),
-                    subtitle: Text(tanggal),
-                  ),
-                );
+                    child: ListTile(
+                  title: Text(snapshot.data[index].title),
+                  subtitle: Text(tanggal),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailArtikel(
+                                title: title,
+                                body: body,
+                                author: author,
+                                date: tanggal,
+                              ))),
+                ));
               },
             );
           }
