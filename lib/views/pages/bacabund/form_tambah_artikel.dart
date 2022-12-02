@@ -60,7 +60,6 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             labelText: "Isi artikel",
                             border: OutlineInputBorder(
