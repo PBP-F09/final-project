@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:endterm_project/utils/bacabund/get_artikel.dart';
 import 'package:endterm_project/views/pages/bacabund/artikel_by_id.dart';
+import 'package:endterm_project/views/pages/bacabund/form_tambah_artikel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,7 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const FormTambahArtikel()));
+          },
           icon: const Icon(Icons.add),
           label: const Text("Tambah Artikel"),
         ));
