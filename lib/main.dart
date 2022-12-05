@@ -1,3 +1,4 @@
+import 'package:endterm_project/routes/routes_factory.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +12,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute<void>(
+          settings: settings,
+          builder: (_) => getScreenByName(settings.name!),
+        );
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -61,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }
