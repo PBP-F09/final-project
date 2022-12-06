@@ -1,5 +1,7 @@
 import 'package:endterm_project/routes/routes_factory.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,16 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute<void>(
-          settings: settings,
-          builder: (_) => getScreenByName(settings.name!),
-        );
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+    return Provider(
+      create: (BuildContext context) { 
+          CookieRequest request = CookieRequest();
+          return request;
+       },
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        onGenerateRoute: (settings) {
+          return MaterialPageRoute<void>(
+            settings: settings,
+            builder: (_) => getScreenByName(settings.name!),
+          );
+        },
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
       ),
     );
   }
@@ -45,9 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(request.jsonData['username']),
       ),
       body: Center(
         child: Column(
