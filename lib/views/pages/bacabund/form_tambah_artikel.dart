@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '_bacabund.dart';
 
 class FormTambahArtikel extends StatefulWidget {
   const FormTambahArtikel({super.key});

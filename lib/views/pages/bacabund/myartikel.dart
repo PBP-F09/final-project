@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:endterm_project/utils/bacabund/get_artikel.dart';
-import 'package:endterm_project/views/pages/bacabund/artikel_by_id.dart';
-import 'package:endterm_project/views/pages/bacabund/form_tambah_artikel.dart';
+part of '_bacabund.dart';
 
 void main() {
   runApp(const MyApp());

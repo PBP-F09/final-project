@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '_bacabund.dart';
 
 class DetailArtikel extends StatefulWidget {
   var title;
