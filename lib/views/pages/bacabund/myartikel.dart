@@ -1,32 +1,14 @@
 part of '_bacabund.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Artikel',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'BacaBund'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyArtikel extends StatefulWidget {
+  const MyArtikel({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyArtikel> createState() => _MyArtikelState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyArtikelState extends State<MyArtikel> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
