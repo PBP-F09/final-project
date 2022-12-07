@@ -29,6 +29,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    final request = context.watch<CookieRequest>();
+    String username = request.jsonData['username'];
+    String role_user = request.jsonData['role_user'];
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -67,15 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           },
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const FormTambahArtikel()));
-          },
-          icon: const Icon(Icons.add),
-          label: const Text("Tambah Artikel"),
-        ));
+        floatingActionButton: (role_user == "admin")
+            ? FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FormTambahArtikel()));
+                },
+                icon: const Icon(Icons.add),
+                label: const Text("Tambah Artikel"),
+              )
+            : Container());
   }
 }
