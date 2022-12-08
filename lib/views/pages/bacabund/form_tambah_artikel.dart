@@ -65,6 +65,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                             )),
+                        maxLines: 10,
                         onChanged: (String? value) {
                           setState(() {
                             _body = value!;
@@ -100,6 +101,14 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+                Artikel artikel = Artikel(
+                  id: 0,
+                  title: _title,
+                  body: _body,
+                  date: DateTime.now().toString().substring(0, 10),
+                  author: 0,
+                );
+                postArtikel(artikel);
                 setState(() {
                   _date = DateTime.now().toString().substring(0, 10);
                 });
@@ -127,7 +136,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                                   ),
                                 ),
                                 Text('Judul: $_title'),
-                                Text('Isi: $_body.substring(0, 30)'),
+                                Text('Isi: $_body'),
                                 Text('Tanggal: $_date'),
                               ],
                             )),
