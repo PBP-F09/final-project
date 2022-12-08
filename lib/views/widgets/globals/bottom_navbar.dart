@@ -1,7 +1,7 @@
 part of '_globals.dart';
 
 class BottomNavbar extends StatefulWidget {
-  BottomNavbar({super.key});
+  const BottomNavbar({super.key});
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
