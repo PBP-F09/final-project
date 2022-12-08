@@ -1,5 +1,4 @@
 import 'package:endterm_project/views/pages/authentication/_authentication.dart';
-import 'package:endterm_project/views/pages/diarybund/form.dart';
 import 'package:flutter/material.dart';
 import '../views/pages/_pages.dart';
 import 'routes_name.dart';

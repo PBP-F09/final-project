@@ -1,6 +1,4 @@
-import 'package:endterm_project/main.dart';
-import 'package:endterm_project/views/pages/diarybund/form.dart';
-import 'package:flutter/material.dart';
+part of '_diarybund.dart';
 
 class DiaryForm extends StatefulWidget {
   const DiaryForm({super.key});
@@ -8,14 +6,6 @@ class DiaryForm extends StatefulWidget {
   @override
   State<DiaryForm> createState() => _DiaryFormState();
 }
-
-// class DiaryBund(models.Model):
-//     user = models.ForeignKey(User, on_delete=models.CASCADE)
-//     date = models.DateField()
-//     title = models.CharField(max_length=200)
-//     emotion = models.IntegerField()
-//     abstract = models.CharField(max_length=200)
-//     description = models.TextField()
 
 class Diary {
   String title = "";
@@ -41,14 +31,11 @@ class ListDiary {
 class _DiaryFormState extends State<DiaryForm> {
   final _formKey = GlobalKey<FormState>();
   DateTime date = DateTime.now();
-  // String _title = "";
-  // int _nominal = 0;
-  // String _jenisBudget = 'Senang';
   String _title = "";
   String _shortdesc = "";
   String _longdesc = "";
   String _emotion = 'Senang';
-  String _date = "";
+  String _date = "belum bisa brok";
   List<String> listEmotion = ['Senang', 'Sedih', 'Marah', 'Biasa'];
   ListDiary listDiary = new ListDiary();
 
@@ -69,6 +56,7 @@ class _DiaryFormState extends State<DiaryForm> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('${date.day}/${date.month}/${date.year}'),
                       ElevatedButton(
@@ -84,7 +72,7 @@ class _DiaryFormState extends State<DiaryForm> {
                           if (newDate == null) return;
                           setState(() {
                             date = newDate;
-                            _date = '${date.day}/${date.month}/${date.year}';
+                            _date = newDate.toString();
                           });
                         },
                       )
@@ -190,34 +178,39 @@ class _DiaryFormState extends State<DiaryForm> {
                     },
                   ),
                 ),
-                ListTile(
-                  leading: const Icon(Icons.emoji_emotions),
-                  title: const Text(
-                    'Emosi',
-                  ),
-                  trailing: DropdownButton(
-                    value: _emotion,
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: listEmotion.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _emotion = newValue!;
-                      });
-                    },
-                  ),
-                ),
-                TextButton(
+                Padding(
+                  padding:const EdgeInsets.all(8.0),
+                  child:
+                  ListTile(
+                    leading: const Icon(Icons.emoji_emotions),
+                    title: const Text(
+                      'Emosi',
+                    ),
+                    trailing: DropdownButton(
+                      value: _emotion,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: listEmotion.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _emotion = newValue!;
+                        });
+                      },
+                    ),
+                  ),),
+                // const Spacer(),
+                ElevatedButton(
                   child: const Text(
                     "Simpan",
                     style: TextStyle(color: Colors.white),
                   ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.merahTua,
+                    minimumSize: const Size.fromHeight(50), // NEW
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -235,7 +228,7 @@ class _DiaryFormState extends State<DiaryForm> {
                             child: Container(
                               child: ListView(
                                 padding:
-                                    const EdgeInsets.only(top: 20, bottom: 20),
+                                const EdgeInsets.only(top: 20, bottom: 20),
                                 shrinkWrap: true,
                                 children: <Widget>[
                                   Center(child: const Text('Informasi DiaryBund')),
@@ -243,12 +236,23 @@ class _DiaryFormState extends State<DiaryForm> {
                                   // TODO: Munculkan informasi yang didapat dari form
                                   Center(
                                       child:
-                                          Text('Diary berhasil ditambahkan!')),
+                                      Text('Diary berhasil ditambahkan!')),
                                   TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: Text('Kembali'),
+                                    child: TextButton(
+                                      child: const Text('Kembali', style: TextStyle(color: Colors.white),),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DiaryBundPage()),
+                                        );
+                                      },
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(AppColors.merahTua),
+                                      ),),
                                   ),
                                 ],
                               ),
