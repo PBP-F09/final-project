@@ -18,7 +18,7 @@ class Artikel {
   int id;
   String title;
   String body;
-  String author;
+  int author;
   String date;
 
   factory Artikel.fromJson(Map<String, dynamic> json) => Artikel(

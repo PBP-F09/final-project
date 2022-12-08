@@ -15,8 +15,10 @@ Widget getScreenByName(String name) {
       case RoutesName.tanyaBund:
         return const TanyaBundPage();
       // Add your page here
+      case RoutesName.bacaBund:
+        return const BacaBundPage();
       default:
-        return const LoginPage();
+        return const HomePage();
     }
   }
 }
