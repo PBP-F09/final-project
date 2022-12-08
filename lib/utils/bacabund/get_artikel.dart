@@ -1,6 +1,4 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:endterm_project/models/bacabund/artikel.dart';
+part of '_bacabund.dart';
 
 Future<List<Artikel>> getArtikel() async {
   var url =

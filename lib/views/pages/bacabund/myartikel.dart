@@ -13,8 +13,8 @@ class _BacaBundPageState extends State<BacaBundPage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     final request = context.watch<CookieRequest>();
-    String username = request.jsonData['username'];
-    String role_user = request.jsonData['role_user'];
+    String? username = request.jsonData['username'];
+    String? role_user = request.jsonData['role_user'];
     return Scaffold(
       appBar: AppBar(
         title: const Text('BacaBund'),
