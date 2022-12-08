@@ -9,6 +9,7 @@ class DiaryDetails extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('DiaryBund'),
+          backgroundColor: AppColors.merahMuda,
         ),
         // drawer: makeDrawer(context),
         body: Container(

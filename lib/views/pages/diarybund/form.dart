@@ -35,7 +35,7 @@ class _DiaryFormState extends State<DiaryForm> {
   String _shortdesc = "";
   String _longdesc = "";
   String _emotion = 'Senang';
-  String _date = "belum bisa brok";
+  String _date = "2022-12-08";
   List<String> listEmotion = ['Senang', 'Sedih', 'Marah', 'Biasa'];
   ListDiary listDiary = new ListDiary();
 
@@ -44,6 +44,7 @@ class _DiaryFormState extends State<DiaryForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Buat Diary'),
+        backgroundColor: AppColors.merahMuda,
       ),
       // drawer: makeDrawer(context),
       body: Form(
@@ -60,7 +61,8 @@ class _DiaryFormState extends State<DiaryForm> {
                     children: [
                       Text('${date.day}/${date.month}/${date.year}'),
                       ElevatedButton(
-                        child: Text('Pilih Hari'),
+                        style: ElevatedButton.styleFrom(backgroundColor: AppColors.merahMuda,),
+                        child: Text('Pilih Tanggal'),
                         onPressed: () async {
                           DateTime? newDate = await showDatePicker(
                             context: context,

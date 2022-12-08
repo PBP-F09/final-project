@@ -13,63 +13,104 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('DiaryBund'),
+        backgroundColor: AppColors.merahMuda,
       ),
       // drawer: makeDrawer(context),
-      body:
-      ListView.builder(
-        itemBuilder: (context, index) {
-          int reverseIndex = ListDiary.list.length - 1 - index;
-          return MaterialButton(
-            onPressed:() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => DiaryDetails(
-                      // diary:
-                      // Diary.data![index],
-                    )),
-              );
-            },
-            child: Card(
-              child: Container(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Halow, mayfa!",
+                  style:
+                  TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(child: Text(
+                  "Bagaimana rutinitas Bunda dan Si Kecil hari ini? Yuk, ceritakan sekarang juga~",
+                  style:
+                  TextStyle(fontSize: 16),
+                ),)
+              ],
+            ),
+          ),
+          Expanded(child:
+          ListView.builder(
+            itemBuilder: (context, index) {
+              int reverseIndex = ListDiary.list.length - 1 - index;
+              return MaterialButton(
+                onPressed:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DiaryDetails(
+                          // diary:
+                          // Diary.data![index],
+                        )),
+                  );
+                },
+                child: Card(
+                  color: AppColors.creamMuda,
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          ListDiary.list[reverseIndex].title,
-                          style: const TextStyle(fontSize: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              ListDiary.list[reverseIndex].date,
+                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              ListDiary.list[reverseIndex].title,
+                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              ListDiary.list[reverseIndex].shortdesc.toString(),
+                              style: const TextStyle(fontSize: 16, color: AppColors.merahMuda),
+                            ),
+                          ],
                         ),
-                        Text(
-                          ListDiary.list[reverseIndex].date,
-                          style: const TextStyle(fontSize: 14),
-                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Chip(
+                              label: Text(ListDiary.list[reverseIndex].emotion),
+                              labelStyle: TextStyle(color: AppColors.merahTua),
+                              backgroundColor: AppColors.creamTua,
+                            )
+                          ],
+                        )
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          ListDiary.list[reverseIndex].shortdesc.toString(),
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          ListDiary.list[reverseIndex].emotion,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    )
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        },
-        itemCount: ListDiary.list.length,
+              );
+            },
+            itemCount: ListDiary.list.length,
+          ),)
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
@@ -83,7 +124,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
                 builder: (context) => DiaryForm()),
                 );
               },
-              tooltip: 'Tambah Diary',
+              tooltip: 'Tulis Diary',
               child: const Icon(Icons.add_comment_rounded),
             ),
           ])),
