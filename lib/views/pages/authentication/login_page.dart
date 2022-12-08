@@ -37,7 +37,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
             child: Form(
               key: _loginFormKey,
-              child: Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -223,6 +222,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    ),);
+    );
   }
 }
