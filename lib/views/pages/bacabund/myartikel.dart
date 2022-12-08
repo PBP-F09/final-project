@@ -28,15 +28,15 @@ class _BacaBundPageState extends State<BacaBundPage> {
             );
           } else {
             return ListView.builder(
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                String title = snapshot.data[index].title;
-                String body = snapshot.data[index].body;
-                String tanggal = snapshot.data[index].date.substring(0, 10);
-                int author = snapshot.data[index].author;
+                String title = snapshot.data![index].title;
+                String body = snapshot.data![index].body;
+                String tanggal = snapshot.data![index].date.substring(0, 10);
+                String author = snapshot.data![index].author.toString();
                 return Card(
                   child: ListTile(
-                    title: Text(snapshot.data[index].title),
+                    title: Text(snapshot.data![index].title),
                     subtitle: Text(tanggal),
                     onTap: () => Navigator.push(
                       context,

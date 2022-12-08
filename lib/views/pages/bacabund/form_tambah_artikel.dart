@@ -9,9 +9,9 @@ class FormTambahArtikel extends StatefulWidget {
 
 class _FormTambahArtikelState extends State<FormTambahArtikel> {
   final _formKey = GlobalKey<FormState>();
-  String _title = "";
-  String _body = "";
-  String _date = "";
+  String _title = '';
+  String _body = '';
+  String _date = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText: "Contoh: Penyakit Ibu Hamil",
-                          labelText: "Judul Artikel",
+                          hintText: 'Contoh: Penyakit Ibu Hamil',
+                          labelText: 'Judul Artikel',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -61,7 +61,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            labelText: "Isi artikel",
+                            labelText: 'Isi artikel',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                             )),
@@ -77,7 +77,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                         },
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
-                            return "Isi artikel tidak boleh kosong!";
+                            return 'Isi artikel tidak boleh kosong!';
                           }
                           return null;
                         },
@@ -120,15 +120,15 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                                 child: Column(
                               children: [
                                 const Text(
-                                  "Data berhasil disimpan!",
+                                  'Data berhasil disimpan!',
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text("Judul: $_title"),
-                                Text("Isi: $_body.substring(0, 30)"),
-                                Text("Tanggal: $_date"),
+                                Text('Judul: $_title'),
+                                Text('Isi: $_body.substring(0, 30)'),
+                                Text('Tanggal: $_date'),
                               ],
                             )),
                             const SizedBox(height: 20),
@@ -147,7 +147,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
               }
             },
             child: const Text(
-              "Simpan",
+              'Simpan',
               style: TextStyle(color: Colors.white),
             ),
           ),
