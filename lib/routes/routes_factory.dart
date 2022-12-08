@@ -1,4 +1,5 @@
 import 'package:endterm_project/views/pages/authentication/_authentication.dart';
+import 'package:endterm_project/views/pages/diarybund/form.dart';
 import 'package:flutter/material.dart';
 import '../views/pages/_pages.dart';
 import 'routes_name.dart';
@@ -14,6 +15,10 @@ Widget getScreenByName(String name) {
         return const LoginPage();
       case RoutesName.tanyaBund:
         return const TanyaBundPage();
+      case RoutesName.diaryBund:
+        return const DiaryBundPage();
+      case RoutesName.diaryBundForm:
+        return const DiaryForm();
       // Add your page here
       default:
         return const LoginPage();
