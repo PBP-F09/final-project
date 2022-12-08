@@ -18,7 +18,7 @@ Widget getScreenByName(String name) {
       case RoutesName.bacaBund:
         return const BacaBundPage();
       default:
-        return const HomePage();
+        return const LoginPage();
     }
   }
 }

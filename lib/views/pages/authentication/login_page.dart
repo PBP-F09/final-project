@@ -22,10 +22,13 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: AppColors.merahMuda,
       resizeToAvoidBottomInset: false,
       body: Center(
-        child: Expanded(
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
           child: Container(
             width: width,
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 130),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
             padding:
                 EdgeInsets.symmetric(vertical: height / 18, horizontal: 20),
             decoration: const BoxDecoration(
@@ -220,6 +223,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    ),);
   }
 }
