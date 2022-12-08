@@ -56,7 +56,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
           }
         },
       ),
-      floatingActionButton: (role_user == "admin")
+      floatingActionButton: (role_user == 'admin')
           ? FloatingActionButton.extended(
               onPressed: () {
                 Navigator.push(
@@ -65,7 +65,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
                         builder: (context) => const FormTambahArtikel()));
               },
               icon: const Icon(Icons.add),
-              label: const Text("Tambah Artikel"),
+              label: const Text('Tambah Artikel'),
             )
           : Container(),
     );

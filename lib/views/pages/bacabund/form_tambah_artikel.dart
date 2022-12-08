@@ -92,7 +92,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
           margin: const EdgeInsets.only(left: 30.0),
           child: TextButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              backgroundColor: MaterialStateProperty.all(Colors.red),
               padding: MaterialStateProperty.all(
                 const EdgeInsets.all(20.0),
               ),
