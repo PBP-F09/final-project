@@ -19,6 +19,8 @@ Widget getScreenByName(String name) {
       case RoutesName.diaryBundForm:
         return const DiaryForm();
       // Add your page here
+      case RoutesName.bacaBund:
+        return const BacaBundPage();
       default:
         return const LoginPage();
     }
