@@ -2,7 +2,7 @@ part of '_bacabund.dart';
 
 Future<List<Artikel>> getArtikel() async {
   var url =
-      Uri.parse('https://halowbund.up.railway.app/artikel-kesehatan/json');
+      Uri.parse('https://halowbund.up.railway.app/artikel-kesehatan/json/');
   var response = await http.get(
     url,
     headers: {

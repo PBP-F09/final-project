@@ -110,53 +110,49 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                 );
                 print('$_title');
                 print('$_body');
-                postArtikel(artikel).then(
-                  (value) => {
-                    setState(() {
-                      _date = DateTime.now().toString().substring(0, 10);
-                    }),
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Dialog(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          elevation: 15,
-                          child: Container(
-                            child: ListView(
-                              padding:
-                                  const EdgeInsets.only(top: 20, bottom: 20),
-                              shrinkWrap: true,
-                              children: <Widget>[
-                                Center(
-                                    child: Column(
-                                  children: [
-                                    const Text(
-                                      'Data berhasil disimpan!',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text('Judul: $_title'),
-                                    Text('Isi: $_body'),
-                                    Text('Tanggal: $_date'),
-                                  ],
-                                )),
-                                const SizedBox(height: 20),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Kembali'),
+                postArtikel(artikel);
+                setState(() {
+                  _date = DateTime.now().toString().substring(0, 10);
+                });
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 15,
+                      child: Container(
+                        child: ListView(
+                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            Center(
+                                child: Column(
+                              children: [
+                                const Text(
+                                  'Data berhasil disimpan!',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
+                                Text('Judul: $_title'),
+                                Text('Isi: $_body'),
+                                Text('Tanggal: $_date'),
                               ],
+                            )),
+                            const SizedBox(height: 20),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Kembali'),
                             ),
-                          ),
-                        );
-                      },
-                    ),
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 );
               }

@@ -2,7 +2,7 @@ part of '_bacabund.dart';
 
 Future<Artikel> postArtikel(Artikel artikel) async {
   var url = Uri.parse(
-      'https://halowbund.up.railway.app/artikel-kesehatan/tambah-artikel');
+      'https://halowbund.up.railway.app/artikel-kesehatan/tambah-artikel/');
   var response = await http.post(
     url,
     headers: {
@@ -11,5 +11,6 @@ Future<Artikel> postArtikel(Artikel artikel) async {
     },
     body: jsonEncode(artikel.toJson()),
   );
-  return jsonDecode(response.body)['success'];
+  print(response.body);
+  return Artikel.fromJson(jsonDecode(response.body));
 }
