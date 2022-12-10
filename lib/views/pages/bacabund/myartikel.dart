@@ -25,7 +25,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(
-              child: Text('artikel kosong'),
+              child: CircularProgressIndicator(),
             );
           } else {
             return ListView.builder(
