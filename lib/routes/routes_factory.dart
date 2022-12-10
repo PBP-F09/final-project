@@ -18,13 +18,10 @@ Widget getScreenByName(String name) {
         return const DiaryBundPage();
       case RoutesName.diaryBundForm:
         return const DiaryForm();
-<<<<<<< HEAD
       case RoutesName.catatBund:
         return const CatatBundPage();
       case RoutesName.catatBundForm:
         return const CatatForm();
-=======
->>>>>>> 28f9880f03c471f749fd377b185c0159a98571c1
       // Add your page here
       case RoutesName.bacaBund:
         return const BacaBundPage();

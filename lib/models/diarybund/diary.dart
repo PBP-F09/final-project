@@ -109,8 +109,4 @@ class Diary {
 //     }
 //     return reverseMap;
 //   }
-<<<<<<< HEAD
 // }
-=======
-// }
->>>>>>> 28f9880f03c471f749fd377b185c0159a98571c1
