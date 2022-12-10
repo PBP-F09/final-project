@@ -11,10 +11,8 @@ Future<List<Diary>> getDiary() async {
   );
   // final response = await request.get(Uri.parse('https://halowbund.up.railway.app/diarybund/json/'));
 
-  print("masuk");
-
   // melakukan decode response menjadi bentuk json
-  // print(utf8.decode(response.bodyBytes));
+  print(utf8.decode(response.bodyBytes));
   var data = jsonDecode(utf8.decode(response.bodyBytes));
   // print(data);
 
