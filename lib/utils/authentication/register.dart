@@ -3,7 +3,7 @@ part of '_authentication.dart';
 void register(request, String username, String password1, String password2, String role, context, mounted) async {
   // 'username' and 'password' should be the values of the user login form.
   final response =
-      await request.login('https://halowbund.up.railway.app/account/signup-flutter/', {
+      await request.login('http://localhost:8000/account/signup-flutter/', {
     'username': username,
     'password1': password1,
     'password2': password2,

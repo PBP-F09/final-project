@@ -1,7 +1,7 @@
 part of '_diarybund.dart';
 
 Future<List<Diary>> getDiary() async {
-  var url = Uri.parse('https://halowbund.up.railway.app/diarybund/json-flutter/');
+  var url = Uri.parse('http://localhost:8000/diarybund/json-flutter/');
   var response = await http.get(
     url,
     headers: {

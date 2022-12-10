@@ -11,6 +11,7 @@ import 'package:endterm_project/models/diarybund/diary.dart';
 import '../../../utils/_utils.dart';
 import '../../../utils/diarybund/_diarybund.dart';
 import '../../../routes/routes_name.dart';
+import '../authentication/_authentication.dart';
 
 part 'listdiary_page.dart';
 part 'form.dart';
