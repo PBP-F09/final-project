@@ -8,8 +8,13 @@ class DiaryBundPage extends StatefulWidget {
 }
 
 class _DiaryBundPageState extends State<DiaryBundPage> {
+
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+    String? username = request.jsonData['username'];
+    String? role_user = request.jsonData['role_user'];
+    print(role_user);
     return Scaffold(
       appBar: AppBar(
         title: Text('DiaryBund'),
@@ -24,7 +29,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Halow, mayfa!",
+                  "Halow, $username!",
                   style:
                   TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -44,74 +49,95 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
               ],
             ),
           ),
-          Expanded(child:
-          ListView.builder(
-            itemBuilder: (context, index) {
-              int reverseIndex = ListDiary.list.length - 1 - index;
-              return MaterialButton(
-                onPressed:() {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DiaryDetails(
-                          // diary:
-                          // Diary.data![index],
-                        )),
-                  );
-                },
-                child: Card(
-                  color: AppColors.creamMuda,
-                  child: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              ListDiary.list[reverseIndex].date,
-                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          // Expanded(child:
+              FutureBuilder(
+              future: getDiary(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.data == null) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  if (!snapshot.hasData) {
+                    return Column(
+                    children: [
+                      Text('Tidak ada diary :(',
+                      style: TextStyle(
+                      color: Color(0xff59A5D8),
+                      fontSize: 20),
+                      ),
+                    ],
+                    );
+                  } else {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                        int reverseIndex = ListDiary.list.length - 1 - index;
+                        return MaterialButton(
+                          onPressed:() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                              builder: (context) => DiaryDetails(
+                              diary:
+                                snapshot.data![reverseIndex],
+                              )),
+                            );
+                          },
+                          child: Card(
+                            color: AppColors.creamMuda,
+                            child: Container(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '${snapshot.data![reverseIndex].date}',
+                                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Text(
+                                        '${snapshot.data![reverseIndex].title}',
+                                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Text(
+                                        '${snapshot.data![reverseIndex].abstract}',
+                                        style: const TextStyle(fontSize: 16, color: AppColors.merahMuda),
+                                      ),
+                                    ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Chip(
+                                          label: Text('${snapshot.data![reverseIndex].emotion}',),
+                                          labelStyle: TextStyle(color: AppColors.merahTua),
+                                          backgroundColor: AppColors.creamTua,
+                                        )
+                                      ],
+                                    )
+                                ],
+                              ),
                             ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              ListDiary.list[reverseIndex].title,
-                              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              ListDiary.list[reverseIndex].shortdesc.toString(),
-                              style: const TextStyle(fontSize: 16, color: AppColors.merahMuda),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Chip(
-                              label: Text(ListDiary.list[reverseIndex].emotion),
-                              labelStyle: TextStyle(color: AppColors.merahTua),
-                              backgroundColor: AppColors.creamTua,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-            itemCount: ListDiary.list.length,
-          ),)
-        ],
-      ),
+                          ),
+                        );
+                      }
+                      );
+                  }
+              }
+          },
+        )
+      // )
+        ],),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

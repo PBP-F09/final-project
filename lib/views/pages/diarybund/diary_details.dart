@@ -1,8 +1,8 @@
 part of '_diarybund.dart';
 
 class DiaryDetails extends StatelessWidget {
-  // final Diary diary;
-  // const DiaryDetails({super.key, required this.diary});
+  final Diary diary;
+  const DiaryDetails({super.key, required this.diary});
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +10,22 @@ class DiaryDetails extends StatelessWidget {
         appBar: AppBar(
           title: const Text('DiaryBund'),
           backgroundColor: AppColors.merahMuda,
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.edit,
+                      size: 26.0,
+                    ),
+                  )
+              ),
+            ],
         ),
         // drawer: makeDrawer(context),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Padding (
               padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
               child: Column(
@@ -22,7 +34,7 @@ class DiaryDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Ini tanggal',
+                        diary.date.toString(),
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.normal),
                       ),
@@ -30,7 +42,7 @@ class DiaryDetails extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        'Adek tiba-tiba demam',
+                        diary.title,
                         style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -38,7 +50,10 @@ class DiaryDetails extends StatelessWidget {
                         height: 8,
                       ),
                       Chip(
-                        label: Text('Sedih'),
+                        label: Text(diary.emotion == 1? "Senang" :
+                        diary.emotion == 2? "Biasa" :
+                        diary.emotion == 3? "Sedih" :
+                        "Marah"),
                         labelStyle: TextStyle(color: AppColors.merahTua),
                         backgroundColor: AppColors.creamTua,
                       )
@@ -49,7 +64,7 @@ class DiaryDetails extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                      'Hari ini adek tiba-tiba demam, batuk, dan muntah-muntah. Sepertinya dia keracunan makanan 0_O',
+                      diary.abstract,
                       style: const TextStyle(
                           fontSize: 16, fontStyle: FontStyle.italic, color: AppColors.merahMuda),
                     ),
@@ -59,8 +74,8 @@ class DiaryDetails extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                      style: const TextStyle(
+                        diary.description,
+                        style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.normal),
                     ),
                   ),

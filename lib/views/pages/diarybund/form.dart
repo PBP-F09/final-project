@@ -7,22 +7,22 @@ class DiaryForm extends StatefulWidget {
   State<DiaryForm> createState() => _DiaryFormState();
 }
 
-class Diary {
-  String title = "";
-  String shortdesc = "";
-  String longdesc = "";
-  String emotion = "";
-  String date = "";
-
-  Diary(String _title, String _short_desc, String _long_desc, String _emotion,
-      String _date) {
-    title = _title;
-    shortdesc = _short_desc;
-    longdesc = _long_desc;
-    emotion = _emotion;
-    date = _date;
-  }
-}
+// class Diary {
+//   String title = "";
+//   String shortdesc = "";
+//   String longdesc = "";
+//   String emotion = "";
+//   String date = "";
+//
+//   Diary(String _title, String _short_desc, String _long_desc, String _emotion,
+//       String _date) {
+//     title = _title;
+//     shortdesc = _short_desc;
+//     longdesc = _long_desc;
+//     emotion = _emotion;
+//     date = _date;
+//   }
+// }
 
 class ListDiary {
   static List<Diary> list = [];
@@ -216,8 +216,18 @@ class _DiaryFormState extends State<DiaryForm> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Diary newDiary = new Diary(
-                          _title, _shortdesc, _longdesc, _emotion, _date);
+                      int emotionInt;
+                      if (_emotion == "Senang") {
+                        emotionInt = 1;
+                      } else if (_emotion == "Biasa") {
+                        emotionInt = 2;
+                      } else if (_emotion == "Sedih") {
+                        emotionInt = 3;
+                      } else {
+                        emotionInt = 4;
+                      }
+                      // Fields newField = new Fields(user: user, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
+                      Diary newDiary = new Diary(pk: 1, user: 1, date: date, title: _title, emotion: emotionInt, abstract: _shortdesc, description: _longdesc);
                       ListDiary.list.add(newDiary);
                       showDialog(
                         context: context,
@@ -234,6 +244,7 @@ class _DiaryFormState extends State<DiaryForm> {
                                 shrinkWrap: true,
                                 children: <Widget>[
                                   Center(child: const Text('Informasi DiaryBund')),
+                                  Center(child: Text('$newDiary.title')),
                                   SizedBox(height: 20),
                                   // TODO: Munculkan informasi yang didapat dari form
                                   Center(
