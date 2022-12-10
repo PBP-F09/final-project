@@ -15,6 +15,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
     final request = context.watch<CookieRequest>();
     String? username = request.jsonData['username'];
     String? role_user = request.jsonData['role_user'];
+    print(role_user);
     return Scaffold(
       appBar: AppBar(
         title: const Text('BacaBund'),
@@ -30,13 +31,13 @@ class _BacaBundPageState extends State<BacaBundPage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                String title = snapshot.data![index].title;
-                String body = snapshot.data![index].body;
-                String tanggal = snapshot.data![index].date.substring(0, 10);
+                String title = snapshot.data![index].judul;
+                String body = snapshot.data![index].isi;
+                String tanggal = snapshot.data![index].tanggal.substring(0, 10);
                 String author = snapshot.data![index].author.toString();
                 return Card(
                   child: ListTile(
-                    title: Text(snapshot.data![index].title),
+                    title: Text(snapshot.data![index].judul),
                     subtitle: Text(tanggal),
                     onTap: () => Navigator.push(
                       context,
@@ -56,18 +57,28 @@ class _BacaBundPageState extends State<BacaBundPage> {
           }
         },
       ),
-      floatingActionButton: (role_user == 'admin')
-          ? FloatingActionButton.extended(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FormTambahArtikel()));
-              },
-              icon: const Icon(Icons.add),
-              label: const Text('Tambah Artikel'),
-            )
-          : Container(),
+      // floatingActionButton: (role_user == 'admin')
+      //     ? FloatingActionButton.extended(
+      //         onPressed: () {
+      //           Navigator.push(
+      //               context,
+      //               MaterialPageRoute(
+      //                   builder: (context) => const FormTambahArtikel()));
+      //         },
+      //         icon: const Icon(Icons.add),
+      //         label: const Text('Tambah Artikel'),
+      //       )
+      //     : Container(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const FormTambahArtikel()));
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Tambah Artikel'),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:endterm_project/utils/bacabund/_bacabund.dart';
+import 'package:endterm_project/models/bacabund/artikel.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 

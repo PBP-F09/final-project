@@ -15,6 +15,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Tambah Artikel Baru'),
@@ -65,6 +66,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                             )),
+                        maxLines: 10,
                         onChanged: (String? value) {
                           setState(() {
                             _body = value!;
@@ -100,9 +102,20 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                setState(() {
-                  _date = DateTime.now().toString().substring(0, 10);
-                });
+                Artikel artikel = Artikel(
+                  id: 0,
+                  judul: _title,
+                  isi: _body,
+                  tanggal: DateTime.now().toString().substring(0, 10),
+                  author: 0,
+                );
+                // print('$_title');
+                // print('$_body');
+                postArtikel(artikel);
+                postArtikel2(request, _title, _body, context, mounted);
+                // setState(() {
+                //   _date = DateTime.now().toString().substring(0, 10);
+                // });
                 showDialog(
                   context: context,
                   builder: (context) {
@@ -127,7 +140,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                                   ),
                                 ),
                                 Text('Judul: $_title'),
-                                Text('Isi: $_body.substring(0, 30)'),
+                                Text('Isi: $_body'),
                                 Text('Tanggal: $_date'),
                               ],
                             )),
