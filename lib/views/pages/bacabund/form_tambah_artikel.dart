@@ -114,9 +114,9 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                 // print('$_body');
                 // postArtikel(artikel);
                 postArtikel2(request, _title, _body, context, mounted);
-                // setState(() {
-                //   _date = DateTime.now().toString().substring(0, 10);
-                // });
+                setState(() {
+                  _date = DateTime.now().toString().substring(0, 10);
+                });
                 showDialog(
                   context: context,
                   builder: (context) {
@@ -149,6 +149,14 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
+                                // Navigator.pop(context);
+                                // back to page list artikel
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const BacaBundPage(),
+                                  ),
+                                );
                               },
                               child: const Text('Kembali'),
                             ),
