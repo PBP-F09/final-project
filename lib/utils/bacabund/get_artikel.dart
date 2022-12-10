@@ -10,6 +10,9 @@ Future<List<Artikel>> getArtikel() async {
       'Content-Type': 'application/json',
     },
   );
+
+  print(utf8.decode(response.bodyBytes));
+
   var data = jsonDecode(utf8.decode(response.bodyBytes));
   List<Artikel> artikel = [];
   for (var d in data) {

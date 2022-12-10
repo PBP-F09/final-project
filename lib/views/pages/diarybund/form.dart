@@ -226,8 +226,10 @@ class _DiaryFormState extends State<DiaryForm> {
                       } else {
                         emotionInt = 4;
                       }
+                      String dateString = "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}";
                       // Fields newField = new Fields(user: user, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
-                      Diary newDiary = new Diary(pk: 1, user: 1, date: date, title: _title, emotion: emotionInt, abstract: _shortdesc, description: _longdesc);
+                      Fields newFields = new Fields(user: 1, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
+                      Diary newDiary = new Diary(pk: 1, fields: newFields);
                       ListDiary.list.add(newDiary);
                       showDialog(
                         context: context,

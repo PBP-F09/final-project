@@ -34,7 +34,8 @@ class DiaryDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        diary.date.toString(),
+                        // diary.fields.date.toString(),
+                        '${diary.fields.date.year.toString().padLeft(4, '0')}-${diary.fields.date.month.toString().padLeft(2, '0')}-${diary.fields.date.day.toString().padLeft(2, '0')}',
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.normal),
                       ),
@@ -42,7 +43,7 @@ class DiaryDetails extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        diary.title,
+                        diary.fields.title,
                         style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -50,9 +51,9 @@ class DiaryDetails extends StatelessWidget {
                         height: 8,
                       ),
                       Chip(
-                        label: Text(diary.emotion == 1? "Senang" :
-                        diary.emotion == 2? "Biasa" :
-                        diary.emotion == 3? "Sedih" :
+                        label: Text(diary.fields.emotion == 1? "Senang" :
+                        diary.fields.emotion == 2? "Biasa" :
+                        diary.fields.emotion == 3? "Sedih" :
                         "Marah"),
                         labelStyle: TextStyle(color: AppColors.merahTua),
                         backgroundColor: AppColors.creamTua,
@@ -64,7 +65,7 @@ class DiaryDetails extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                      diary.abstract,
+                      diary.fields.fieldsAbstract,
                       style: const TextStyle(
                           fontSize: 16, fontStyle: FontStyle.italic, color: AppColors.merahMuda),
                     ),
@@ -74,7 +75,7 @@ class DiaryDetails extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                        diary.description,
+                        diary.fields.description,
                         style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.normal),
                     ),
