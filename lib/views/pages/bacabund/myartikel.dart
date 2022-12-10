@@ -27,6 +27,10 @@ class _BacaBundPageState extends State<BacaBundPage> {
             return const Center(
               child: CircularProgressIndicator(),
             );
+          } else if (snapshot.data!.length == 0) {
+            return const Center(
+              child: Text('Tidak ada artikel'),
+            );
           } else {
             return ListView.builder(
               itemCount: snapshot.data!.length,
