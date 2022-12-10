@@ -14,3 +14,12 @@ Future<Artikel> postArtikel(Artikel artikel) async {
   print(response.body);
   return Artikel.fromJson(jsonDecode(response.body));
 }
+
+void postArtikel2(request, String judul, String isi, BuildContext context, mounted) async {
+  print("masuk ke post artikel 2");
+  final response = await request.post('https://halowbund.up.railway.app/artikel-kesehatan/tambah-artikel/', {
+    'judul': judul,
+    'isi': isi,
+  });
+  print(response);
+}

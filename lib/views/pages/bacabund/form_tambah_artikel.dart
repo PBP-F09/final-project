@@ -15,6 +15,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Tambah Artikel Baru'),
@@ -108,12 +109,13 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                   tanggal: DateTime.now().toString().substring(0, 10),
                   author: 0,
                 );
-                print('$_title');
-                print('$_body');
+                // print('$_title');
+                // print('$_body');
                 postArtikel(artikel);
-                setState(() {
-                  _date = DateTime.now().toString().substring(0, 10);
-                });
+                postArtikel2(request, _title, _body, context, mounted);
+                // setState(() {
+                //   _date = DateTime.now().toString().substring(0, 10);
+                // });
                 showDialog(
                   context: context,
                   builder: (context) {
