@@ -36,15 +36,10 @@ class _DetailArtikelState extends State<DetailArtikel> {
           ),
           const SizedBox(height: 12),
           Flexible(
-              child: SingleChildScrollView(
-            child: Text(widget.body),
-          )),
-          const SizedBox(height: 8),
-          Row(children: [
-            const Text('Author: ',
-                style: TextStyle(fontWeight: FontWeight.w700)),
-            Text(widget.author.toString()),
-          ]),
+            child: SingleChildScrollView(
+              child: Text(widget.body),
+            ),
+          ),
           const SizedBox(height: 8),
           Row(children: [
             const Text('Created: ',
