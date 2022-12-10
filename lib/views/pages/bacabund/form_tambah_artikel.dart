@@ -110,9 +110,6 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
                   tanggal: DateTime.now().toString().substring(0, 10),
                   author: username,
                 );
-                // print('$_title');
-                // print('$_body');
-                // postArtikel(artikel);
                 postArtikel2(request, _title, _body, context, mounted);
                 setState(() {
                   _date = DateTime.now().toString().substring(0, 10);

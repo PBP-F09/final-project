@@ -71,16 +71,6 @@ class _BacaBundPageState extends State<BacaBundPage> {
               label: const Text('Tambah Artikel'),
             )
           : Container(),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () {
-      //     Navigator.push(
-      //         context,
-      //         MaterialPageRoute(
-      //             builder: (context) => const FormTambahArtikel()));
-      //   },
-      //   icon: const Icon(Icons.add),
-      //   label: const Text('Tambah Artikel'),
-      // ),
     );
   }
 }

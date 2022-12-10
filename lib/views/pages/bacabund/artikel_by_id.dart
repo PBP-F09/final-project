@@ -40,12 +40,6 @@ class _DetailArtikelState extends State<DetailArtikel> {
               child: Text(widget.body),
             ),
           ),
-          // const SizedBox(height: 8),
-          // Row(children: [
-          //   const Text('Author: ',
-          //       style: TextStyle(fontWeight: FontWeight.w700)),
-          //   Text(widget.author.toString()),
-          // ]),
           const SizedBox(height: 8),
           Row(children: [
             const Text('Created: ',
