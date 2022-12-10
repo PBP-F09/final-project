@@ -6,4 +6,5 @@ class RoutesName {
   static const periksaBund = '/periksa_bund';
   static const home = '/home';
   static const login = '/login';
+  static const signup = '/signup';
 }

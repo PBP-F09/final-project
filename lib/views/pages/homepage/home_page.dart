@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _pages = <Widget>[
+    BacaBundPage(),
     MyHomePage(
       title: 'test',
     ),
