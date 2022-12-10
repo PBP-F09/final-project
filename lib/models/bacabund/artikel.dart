@@ -9,31 +9,31 @@ String artikelToJson(List<Artikel> data) =>
 class Artikel {
   Artikel({
     required this.id,
-    required this.judul,
-    required this.isi,
+    required this.title,
+    required this.body,
     required this.author,
-    required this.tanggal,
+    required this.date,
   });
 
   int id;
-  String judul;
-  String isi;
+  String title;
+  String body;
   int author;
-  String tanggal;
+  String date;
 
   factory Artikel.fromJson(Map<String, dynamic> json) => Artikel(
         id: json['pk'],
-        judul: json['fields']['judul'],
-        isi: json['fields']['isi'],
-        tanggal: json['fields']['tanggal'],
+        title: json['fields']['judul'],
+        body: json['fields']['isi'],
+        date: json['fields']['tanggal'],
         author: json['fields']['author'],
       );
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'judul': judul,
-        'isi': isi,
+        'title': title,
+        'body': body,
         'author': author,
-        'tanggal': tanggal,
+        'date': date,
       };
 }
