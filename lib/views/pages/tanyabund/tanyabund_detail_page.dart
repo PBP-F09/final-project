@@ -1,20 +1,30 @@
 part of '_tanyabund.dart';
 
 class TanyaBundDetailPage extends HookWidget {
-  const TanyaBundDetailPage({super.key, required this.data});
+  TanyaBundDetailPage({super.key, required this.data});
 
   final dynamic data;
+  final answerController = TextEditingController();
+  Future<List<AnswerModel>> fetchData() async {
+    return await fetchAnswerById(data.pk);
+  }
 
   @override
   Widget build(BuildContext context) {
     final totalLike = useState(data.totalLike);
+    final totalAnswer = useState(data.totalAnswer);
+    final reloadKey = useState(UniqueKey());
+    final future = useMemoized(fetchData, [reloadKey.value]);
+    final snapshot = useFuture(future);
     final request = context.watch<CookieRequest>();
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              const CustomAppBar(pageName: 'TanyaBund Detail',),
+              const CustomAppBar(
+                pageName: 'TanyaBund Detail',
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -40,8 +50,9 @@ class TanyaBundDetailPage extends HookWidget {
                             Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                  color: AppColors.merahTua,
-                                  borderRadius: BorderRadius.circular(10)),
+                                color: AppColors.merahTua,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                               child: Text(
                                 '${data.roleUser}',
                                 style: const TextStyle(
@@ -79,21 +90,25 @@ class TanyaBundDetailPage extends HookWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          data.totalLike < 2
+                          totalLike.value < 2
                               ? '${totalLike.value} Like'
                               : '${totalLike.value} Likes',
                           style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
                         Text(
-                          data.totalAnswer < 2
-                              ? '${data.totalAnswer} Answer'
-                              : '${data.totalAnswer} Answers',
+                          totalAnswer.value < 2
+                              ? '${totalAnswer.value} Answer'
+                              : '${totalAnswer.value} Answers',
                           style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -115,7 +130,65 @@ class TanyaBundDetailPage extends HookWidget {
                           icon: const Icon(Icons.comment),
                           color: Colors.black,
                           onPressed: () {
-                            print('test');
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  color: AppColors.merahMuda,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 40,
+                                      horizontal: 30,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          'Write your answer here',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Expanded(
+                                            child: MultiLineTextField(
+                                              label: '',
+                                              maxLines: 10,
+                                              bordercolor: AppColors.white,
+                                              controller: answerController,
+                                            ),
+                                          ),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            totalAnswer.value =
+                                                await createAnswer(
+                                              answerController.text,
+                                              request.jsonData['pk_user'],
+                                              request.jsonData['role_user'],
+                                              data.pk,
+                                            );
+                                            reloadKey.value = UniqueKey();
+                                            answerController.clear();
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'Send',
+                                            style: TextStyle(fontSize: 24),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
                           },
                         ),
                         IconButton(
@@ -136,46 +209,26 @@ class TanyaBundDetailPage extends HookWidget {
                       'Answers:',
                       style: TextStyle(fontSize: 16),
                     ),
-                    SizedBox(
-                      child: FutureBuilder(
-                        future: fetchAnswerById(data.pk),
-                        builder: (context, AsyncSnapshot snapshot) {
-                          if (snapshot.data == null) {
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          } else {
-                            if (snapshot.data.length == 0) {
-                              return Column(
-                                children: const [
-                                  Text(
-                                    'Tidak ada to do list :(',
-                                    style: TextStyle(
-                                        color: Color(0xff59A5D8), fontSize: 20),
-                                  ),
-                                  SizedBox(height: 8),
-                                ],
+                    snapshot.hasData
+                        ? ListView.builder(
+                            primary: false,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (_, index) {
+                              return AnswerCard(
+                                username: snapshot.data![index].user,
+                                role: snapshot.data![index].roleUser,
+                                text: snapshot.data![index].text,
+                                datetime: DateFormat.yMMMd()
+                                    .format(snapshot.data![index].date),
                               );
-                            } else {
-                              return ListView.builder(
-                                primary: false,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: snapshot.data!.length,
-                                itemBuilder: (_, index) {
-                                  return AnswerCard(
-                                    username: snapshot.data![index].user,
-                                    role: snapshot.data![index].roleUser,
-                                    text: snapshot.data![index].text,
-                                    datetime: DateFormat.yMMMd()
-                                        .format(snapshot.data![index].date),
-                                  );
-                                },
-                              );
-                            }
-                          }
-                        },
-                      ),
-                    ),
+                            },
+                          )
+                        : Container(
+                            margin: const EdgeInsets.only(top: 150),
+                            child: const SpinKitProgressIndicator(),
+                          ),
                   ],
                 ),
               ),

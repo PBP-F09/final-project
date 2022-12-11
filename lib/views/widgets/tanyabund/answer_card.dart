@@ -3,16 +3,16 @@ part of '_tanyabund.dart';
 class AnswerCard extends StatelessWidget {
   const AnswerCard({
     super.key,
-    this.username,
-    this.role,
-    this.datetime,
-    this.text,
+    required this.username,
+    required this.role,
+    required this.datetime,
+    required this.text,
   });
 
-  final username;
-  final role;
-  final datetime;
-  final text;
+  final String username;
+  final String role;
+  final String datetime;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class AnswerCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Icon(
+              const Icon(
                 Icons.delete,
                 size: 20,
                 color: Colors.brown,

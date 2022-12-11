@@ -46,6 +46,7 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             'Halow, ${request.jsonData['username']}!',
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ class HomePage extends StatelessWidget {
                             print(request.jsonData['username']);
                             logout(request, context);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.logout,
                             color: Colors.white,
                             size: 25,
