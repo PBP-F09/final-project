@@ -1,7 +1,7 @@
 part of '_tanyabund.dart';
 
 Future<List<AnswerModel>> fetchAnswerById(id) async {
-  var url = Uri.parse('http://10.0.2.2:8000/qna/json2filter/$id');
+  var url = Uri.parse('https://halowbund.up.railway.app/qna/json2filter/$id');
   var response = await http.get(
     url,
     headers: {

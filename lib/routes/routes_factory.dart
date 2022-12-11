@@ -14,7 +14,7 @@ Widget getScreenByName(String name) {
       case RoutesName.login:
         return const LoginPage();
       case RoutesName.tanyaBund:
-        return const TanyaBundPage();
+        return TanyaBundPage();
       // Add your page here
       case RoutesName.bacaBund:
         return const BacaBundPage();
