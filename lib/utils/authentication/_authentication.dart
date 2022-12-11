@@ -5,3 +5,4 @@ import '../../../utils/_utils.dart';
 
 part 'login.dart';
 part 'register.dart';
+part 'logout.dart';
