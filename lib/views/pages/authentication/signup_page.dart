@@ -74,7 +74,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'Username',
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -117,7 +119,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'Password',
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -174,7 +178,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'Confirm Password',
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -232,7 +238,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'Role',
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -262,8 +270,15 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_signupFormKey.currentState!.validate()) {
-                            register(request, username, password,
-                                confirmPassword, role, context, mounted);
+                            register(
+                              request,
+                              username,
+                              password,
+                              confirmPassword,
+                              role,
+                              context,
+                              mounted,
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(
