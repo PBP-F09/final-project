@@ -11,6 +11,8 @@ import 'package:endterm_project/models/catatbund/catat.dart';
 import '../../../utils/_utils.dart';
 import '../../../utils/catatbund/_catatbund.dart';
 import '../../../routes/routes_name.dart';
+import '../authentication/_authentication.dart';
 
 part 'listcatat_page.dart';
 part 'form.dart';
+// part 'catat_details.dart';

@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final diary = diaryFromJson(jsonString);
+
 import 'dart:convert';
 
 List<Catat> catatFromJson(String str) => List<Catat>.from(json.decode(str).map((x) => Catat.fromJson(x)));
@@ -6,35 +10,48 @@ String catatToJson(List<Catat> data) => json.encode(List<dynamic>.from(data.map(
 
 class Catat {
   Catat({
-    // required this.model,
     required this.pk,
-    // required this.fields,
+    required this.fields,
+  });
+
+  int pk;
+  Fields fields;
+
+  factory Catat.fromJson(Map<String, dynamic> json) => Catat(
+    pk: json["pk"],
+    fields: Fields.fromJson(json["fields"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "pk": pk,
+    "fields": fields.toJson(),
+  };
+}
+
+class Fields {
+  Fields({
     required this.user,
     required this.date,
     required this.weight,
     required this.height,
   });
 
-  int pk;
   int user;
   DateTime date;
   String weight;
   String height;
 
-  factory Catat.fromJson(Map<String, dynamic> json) => Catat(
-    // model: modelValues.map[json["model"]],
-    pk: json['pk'],
-    user: json['fields']['user'],
-    date: DateTime.parse(json['fields']["date"]),
-    weight: json['fields']['weight'],
-    height: json['fields']['height'],
+  factory Fields.fromJson(Map<String, dynamic> json) => Fields(
+    user: json["user"],
+    date: DateTime.parse(json["date"]),
+    weight: json["weight"],
+    height: json["height"],
   );
 
   Map<String, dynamic> toJson() => {
-    'pk': pk,
-    'user': user,
-    'date': "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
-    'weight': weight,
-    'height': height,
+    "user": user,
+    "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+    "weight": weight,
+    "height": height,
   };
 }

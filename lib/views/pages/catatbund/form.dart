@@ -21,6 +21,7 @@ class _CatatFormState extends State<CatatForm> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: Text('Buat Catatan'),
@@ -140,8 +141,7 @@ class _CatatFormState extends State<CatatForm> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Fields newField = new Fields(user: user, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
-                      Catat newCatat = new Catat(pk: 1, user: 1, date: date, weight: _weight, height: _height);
-                      ListCatat.list.add(newCatat);
+                      postCatat(request, _weight, _height, context, mounted);
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -157,7 +157,7 @@ class _CatatFormState extends State<CatatForm> {
                                 shrinkWrap: true,
                                 children: <Widget>[
                                   Center(child: const Text('Informasi CatatBund')),
-                                  Center(child: Text('$newCatat.height')),
+                                  // Center(child: Text(_title)),
                                   SizedBox(height: 20),
                                   // TODO: Munculkan informasi yang didapat dari form
                                   Center(

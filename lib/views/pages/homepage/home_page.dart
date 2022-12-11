@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
     MyHomePage(
       title: 'test',
     ),
+    DiaryBundPage(),
     MyHomePage(
       title: 'title',
     ),

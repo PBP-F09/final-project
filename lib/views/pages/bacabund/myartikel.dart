@@ -25,7 +25,11 @@ class _BacaBundPageState extends State<BacaBundPage> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(
-              child: Text('artikel kosong'),
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.data!.length == 0) {
+            return const Center(
+              child: Text('Tidak ada artikel'),
             );
           } else {
             return ListView.builder(
@@ -34,7 +38,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
                 String title = snapshot.data![index].judul;
                 String body = snapshot.data![index].isi;
                 String tanggal = snapshot.data![index].tanggal.substring(0, 10);
-                String author = snapshot.data![index].author.toString();
+                String author = snapshot.data![index].author;
                 return Card(
                   child: ListTile(
                     title: Text(snapshot.data![index].judul),
@@ -57,28 +61,20 @@ class _BacaBundPageState extends State<BacaBundPage> {
           }
         },
       ),
-      // floatingActionButton: (role_user == 'admin')
-      //     ? FloatingActionButton.extended(
-      //         onPressed: () {
-      //           Navigator.push(
-      //               context,
-      //               MaterialPageRoute(
-      //                   builder: (context) => const FormTambahArtikel()));
-      //         },
-      //         icon: const Icon(Icons.add),
-      //         label: const Text('Tambah Artikel'),
-      //       )
-      //     : Container(),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const FormTambahArtikel()));
-        },
-        icon: const Icon(Icons.add),
-        label: const Text('Tambah Artikel'),
-      ),
+      floatingActionButton: (role_user == 'admin' || role_user == 'Admin')
+          ? FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FormTambahArtikel(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('Tambah Artikel'),
+            )
+          : Container(),
     );
   }
 }

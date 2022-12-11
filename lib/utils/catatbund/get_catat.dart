@@ -11,6 +11,7 @@ Future<List<Catat>> getCatat() async {
   );
 
   // melakukan decode response menjadi bentuk json
+  print(utf8.decode(response.bodyBytes));
   var data = jsonDecode(utf8.decode(response.bodyBytes));
 
   // melakukan konversi data json menjadi object Catat
