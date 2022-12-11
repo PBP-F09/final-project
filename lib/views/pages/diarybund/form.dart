@@ -7,23 +7,6 @@ class DiaryForm extends StatefulWidget {
   State<DiaryForm> createState() => _DiaryFormState();
 }
 
-// class Diary {
-//   String title = "";
-//   String shortdesc = "";
-//   String longdesc = "";
-//   String emotion = "";
-//   String date = "";
-//
-//   Diary(String _title, String _short_desc, String _long_desc, String _emotion,
-//       String _date) {
-//     title = _title;
-//     shortdesc = _short_desc;
-//     longdesc = _long_desc;
-//     emotion = _emotion;
-//     date = _date;
-//   }
-// }
-
 class ListDiary {
   static List<Diary> list = [];
 }
@@ -217,7 +200,7 @@ class _DiaryFormState extends State<DiaryForm> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      int emotionInt;
+                      int emotionInt = 0;
                       if (_emotion == "Senang") {
                         emotionInt = 1;
                       } else if (_emotion == "Biasa") {

@@ -10,3 +10,4 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 part 'get_diary.dart';
 part 'post_diary.dart';
+part 'delete_diary.dart';

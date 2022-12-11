@@ -6,6 +6,7 @@ class DiaryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('DiaryBund'),
@@ -14,9 +15,11 @@ class DiaryDetails extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      deleteDiary(request, diary.pk);
+                    },
                     child: Icon(
-                      Icons.edit,
+                      Icons.delete,
                       size: 26.0,
                     ),
                   )
