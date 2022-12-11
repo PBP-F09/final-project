@@ -14,6 +14,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
     final request = context.watch<CookieRequest>();
     String? username = request.jsonData['username'];
     String? role_user = request.jsonData['role_user'];
+
     print(role_user);
     if (role_user == "bumil" || role_user == "Bunda") {
       return Scaffold(
@@ -52,7 +53,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
             ),
             // Expanded(child:
             FutureBuilder(
-              future: getDiary(),
+              future: getDiary(request, username),
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return const Center(child: CircularProgressIndicator());

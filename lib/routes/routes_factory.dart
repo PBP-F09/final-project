@@ -1,4 +1,5 @@
 import 'package:endterm_project/views/pages/authentication/_authentication.dart';
+import 'package:endterm_project/views/pages/onboarding/_onboarding.dart';
 import 'package:flutter/material.dart';
 import '../views/pages/_pages.dart';
 import 'routes_name.dart';
@@ -22,7 +23,7 @@ Widget getScreenByName(String name) {
       case RoutesName.bacaBund:
         return const BacaBundPage();
       default:
-        return const LoginPage();
+        return const OnboardingPage();
     }
   }
 }
