@@ -100,8 +100,6 @@ class AnswerCard extends StatelessWidget {
             child: Flexible(
               child: Text(
                 text,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),

@@ -30,9 +30,6 @@ class TanyaBundDetailPage extends HookWidget {
               const CustomAppBar(
                 pageName: 'TanyaBund Detail',
               ),
-              const CustomAppBar(
-                pageName: 'TanyaBund Detail',
-              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
