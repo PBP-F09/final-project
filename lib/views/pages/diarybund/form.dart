@@ -214,7 +214,7 @@ class _DiaryFormState extends State<DiaryForm> {
                       // Fields newField = new Fields(user: user, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
                       // Fields newFields = new Fields(user: 1, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
                       // Diary newDiary = new Diary(pk: 1, fields: newFields);
-                      postDiary(request, _title, _shortdesc, _longdesc, emotionInt, context, mounted);
+                      postDiary(request, _title, _shortdesc, _longdesc, emotionInt, request.jsonData['username'], context, mounted);
                       // ListDiary.list.add(newDiary);
                       showDialog(
                         context: context,

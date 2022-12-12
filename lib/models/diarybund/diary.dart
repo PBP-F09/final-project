@@ -38,7 +38,7 @@ class Fields {
     required this.description,
   });
 
-  int user;
+  String user;
   DateTime date;
   String title;
   int emotion;

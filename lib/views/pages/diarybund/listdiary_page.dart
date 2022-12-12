@@ -53,7 +53,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
             ),
             // Expanded(child:
             FutureBuilder(
-              future: getDiary(request, username),
+              future: getDiary(request.jsonData['username']),
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return const Center(child: const SpinKitProgressIndicator());
@@ -73,13 +73,13 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
                     ListView.builder(
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          // int reverseIndex = ListDiary.list.length - 1 - index;
+                          int reverseIndex = ListDiary.list.length - 1 - index;
                           String emotionString = "";
-                          if (snapshot.data![index].fields.emotion == 1) {
+                          if (snapshot.data![reverseIndex].fields.emotion == 1) {
                             emotionString = 'Senang';
-                          } else if (snapshot.data![index].fields.emotion == 2) {
+                          } else if (snapshot.data![reverseIndex].fields.emotion == 2) {
                             emotionString = 'Biasa';
-                          } else if (snapshot.data![index].fields.emotion == 3) {
+                          } else if (snapshot.data![reverseIndex].fields.emotion == 3) {
                             emotionString = 'Sedih';
                           } else {
                             emotionString = 'Marah';
@@ -91,7 +91,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
                                 MaterialPageRoute(
                                     builder: (context) => DiaryDetails(
                                       diary:
-                                      snapshot.data![index],
+                                      snapshot.data![reverseIndex],
                                     )),
                               );
                             },
@@ -109,21 +109,21 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
                                       children: [
                                         Text(
                                           // '${snapshot.data![index].fields.date}',
-                                          '${snapshot.data![index].fields.date.year.toString().padLeft(4, '0')}-${snapshot.data![index].fields.date.month.toString().padLeft(2, '0')}-${snapshot.data![index].fields.date.day.toString().padLeft(2, '0')}',
+                                          '${snapshot.data![reverseIndex].fields.date.year.toString().padLeft(4, '0')}-${snapshot.data![reverseIndex].fields.date.month.toString().padLeft(2, '0')}-${snapshot.data![reverseIndex].fields.date.day.toString().padLeft(2, '0')}',
                                           style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(
                                           height: 6,
                                         ),
                                         Text(
-                                          '${snapshot.data![index].fields.title}',
+                                          '${snapshot.data![reverseIndex].fields.title}',
                                           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(
                                           height: 6,
                                         ),
                                         Text(
-                                          '${snapshot.data![index].fields.fieldsAbstract}',
+                                          '${snapshot.data![reverseIndex].fields.fieldsAbstract}',
                                           style: const TextStyle(fontSize: 16, color: AppColors.merahMuda),
                                         ),
                                       ],
