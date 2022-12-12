@@ -1,3 +1,4 @@
+import 'package:endterm_project/views/widgets/globals/_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:endterm_project/main.dart';
 import 'package:flutter/material.dart';

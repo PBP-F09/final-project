@@ -32,7 +32,6 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
           title: Text('DiaryBund'),
           backgroundColor: AppColors.merahMuda,
         ),
-        // drawer: makeDrawer(context),
         body: Column(
           children: [
             Padding(
@@ -167,6 +166,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               FloatingActionButton(
+                backgroundColor: AppColors.merahMuda,
                 onPressed: () {
                   Navigator.push(
                     context,

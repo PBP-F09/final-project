@@ -67,7 +67,7 @@ class _CatatBundPageState extends State<CatatBundPage> {
               builder: (context, AsyncSnapshot snapshot) {
                 
                 if (snapshot.data == null) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: SpinKitProgressIndicator());
                 } else {
                   if (!snapshot.hasData) {
                     return Column(
@@ -141,6 +141,7 @@ class _CatatBundPageState extends State<CatatBundPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             FloatingActionButton(
+              backgroundColor: AppColors.merahMuda,
               onPressed: () {
                 Navigator.push(
                 context,

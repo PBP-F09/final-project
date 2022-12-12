@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../../models/periksabund/informasi.dart';
 import '../../../utils/_utils.dart';
+import '../../widgets/globals/_globals.dart';
 
 // import 'package:provider/provider.dart';
 // import 'package:pbp_django_auth/pbp_django_auth.dart';

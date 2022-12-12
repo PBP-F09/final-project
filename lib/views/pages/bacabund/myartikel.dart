@@ -18,14 +18,14 @@ class _BacaBundPageState extends State<BacaBundPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('BacaBund'),
-        backgroundColor: Colors.red,
+        backgroundColor: AppColors.merahMuda,
       ),
       body: FutureBuilder(
         future: getArtikel(),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: SpinKitProgressIndicator(),
             );
           } else if (snapshot.data!.length == 0) {
             return const Center(
