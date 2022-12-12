@@ -1,7 +1,7 @@
 part of '_catatbund.dart';
 
 Future<List<Catat>> getCatat(String username) async {
-  var url = Uri.parse('http://10.0.2.2:8000/catatbund/json/$username');
+  var url = Uri.parse('https://halowbund.up.railway.app/catatbund/json/$username');
   var response = await http.get(
     url,
     headers: {

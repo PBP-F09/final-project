@@ -18,7 +18,7 @@ part of '_catatbund.dart';
 
 Future<List<Catat>> postCatat(request, double weight, double height, BuildContext context, mounted, String username) async {
   
-  final response = await http.post(Uri.parse('http://10.0.2.2:8000/catatbund/add_request_flutter/'),
+  final response = await http.post(Uri.parse('https://halowbund.up.railway.app/catatbund/add_request_flutter/'),
       headers: <String, String>{
         'Content-Type': 'application/json;charset=UTF-8'
       },
