@@ -22,6 +22,7 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Tambah Informasi'),
+          backgroundColor: AppColors.merahMuda,
         ),
         body: Form(
           key: _formKey,
@@ -158,7 +159,7 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                         },
                       ),
                     ),
-                                    TextButton(
+                  TextButton(
                   child: const Text(
                     "Simpan",
                     style: TextStyle(color: Colors.white),
@@ -169,9 +170,63 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       postNote(request, lokasi, tanggal, waktu, kapasitas_balita, request.jsonData['username']);
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 15,
+                    child: Container(
+                      child: ListView(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          Center(
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Data berhasil disimpan!',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text('Lokasi: $lokasi'),
+                                Text('Waktu: $waktu'),
+                                Text('Tanggal Tersedia: $tanggal'),
+                                Text('Kapasitas Balita: $kapasitas_balita'),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              // Navigator.pop(context);
+                              // back to page list artikel
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PeriksaBundPage(),
+                                ),
+                              );
+                            },
+                            child: const Text('Kembali'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
                     }
                   },
+                  
                 )
+                
+                
                   ],
                 )),
           ),
