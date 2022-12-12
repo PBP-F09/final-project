@@ -15,6 +15,10 @@ Widget getScreenByName(String name) {
         return const LoginPage();
       case RoutesName.tanyaBund:
         return TanyaBundPage();
+      case RoutesName.catatBund:
+        return const CatatBundPage();
+      case RoutesName.catatBundForm:
+        return const CatatForm();
       // Add your page here
       case RoutesName.bacaBund:
         return const BacaBundPage();
