@@ -2,13 +2,8 @@ part of '_tanyabund.dart';
 
 class TanyaBundDetailPage extends HookWidget {
   TanyaBundDetailPage({super.key, required this.data});
-  TanyaBundDetailPage({super.key, required this.data});
 
   final dynamic data;
-  final answerController = TextEditingController();
-  Future<List<AnswerModel>> fetchData() async {
-    return await fetchAnswerById(data.pk);
-  }
   final answerController = TextEditingController();
   Future<List<AnswerModel>> fetchData() async {
     return await fetchAnswerById(data.pk);
@@ -17,10 +12,6 @@ class TanyaBundDetailPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final totalLike = useState(data.totalLike);
-    final totalAnswer = useState(data.totalAnswer);
-    final reloadKey = useState(UniqueKey());
-    final future = useMemoized(fetchData, [reloadKey.value]);
-    final snapshot = useFuture(future);
     final totalAnswer = useState(data.totalAnswer);
     final reloadKey = useState(UniqueKey());
     final future = useMemoized(fetchData, [reloadKey.value]);
@@ -69,9 +60,7 @@ class TanyaBundDetailPage extends HookWidget {
                               decoration: BoxDecoration(
                                 color: AppColors.merahTua,
                                 borderRadius: BorderRadius.circular(10),
-                              ),
-                                color: AppColors.merahTua,
-                                borderRadius: BorderRadius.circular(10),
+                            
                               ),
                               child: Text(
                                 '${data.roleUser}',
@@ -111,13 +100,9 @@ class TanyaBundDetailPage extends HookWidget {
                       children: [
                         Text(
                           totalLike.value < 2
-                          totalLike.value < 2
                               ? '${totalLike.value} Like'
                               : '${totalLike.value} Likes',
                           style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -129,13 +114,7 @@ class TanyaBundDetailPage extends HookWidget {
                           totalAnswer.value < 2
                               ? '${totalAnswer.value} Answer'
                               : '${totalAnswer.value} Answers',
-                          totalAnswer.value < 2
-                              ? '${totalAnswer.value} Answer'
-                              : '${totalAnswer.value} Answers',
                           style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
