@@ -56,13 +56,11 @@ class TanyaBundPage extends HookWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Expanded(
-                            child: MultiLineTextField(
-                              label: '',
-                              maxLines: 10,
-                              bordercolor: AppColors.white,
-                              controller: questionController,
-                            ),
+                          child: MultiLineTextField(
+                            label: '',
+                            maxLines: 10,
+                            bordercolor: AppColors.white,
+                            controller: questionController,
                           ),
                         ),
                         ElevatedButton(

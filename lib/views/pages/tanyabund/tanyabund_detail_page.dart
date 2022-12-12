@@ -57,7 +57,6 @@ class TanyaBundDetailPage extends HookWidget {
                               decoration: BoxDecoration(
                                 color: AppColors.merahTua,
                                 borderRadius: BorderRadius.circular(10),
-                            
                               ),
                               child: Text(
                                 '${data.roleUser}',
@@ -173,13 +172,11 @@ class TanyaBundDetailPage extends HookWidget {
                                             padding: const EdgeInsets.symmetric(
                                               vertical: 10,
                                             ),
-                                            child: Expanded(
-                                              child: MultiLineTextField(
-                                                label: '',
-                                                maxLines: 10,
-                                                bordercolor: AppColors.white,
-                                                controller: answerController,
-                                              ),
+                                            child: MultiLineTextField(
+                                              label: '',
+                                              maxLines: 10,
+                                              bordercolor: AppColors.white,
+                                              controller: answerController,
                                             ),
                                           ),
                                           ElevatedButton(

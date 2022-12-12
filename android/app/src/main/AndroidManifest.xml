@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.endterm_project">
    <application
-        android:label="endterm_project"
+        android:label="HalowBund"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
