@@ -83,7 +83,6 @@ class _CatatBundPageState extends State<CatatBundPage> {
                     return Expanded(child: ListView.builder(
                         itemCount: snapshot.data!.length,
                         shrinkWrap: true,
-
                         itemBuilder: (context, index) => Card(
                               color: AppColors.creamMuda,
                               child: Container(
