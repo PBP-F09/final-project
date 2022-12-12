@@ -110,22 +110,34 @@ class DiaryDetails extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  Flexible(
-                    child: Text(
-                      diary.fields.fieldsAbstract,
-                      style: const TextStyle(
-                          fontSize: 16, fontStyle: FontStyle.italic, color: AppColors.merahMuda),
-                    ),
+                  Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          diary.fields.fieldsAbstract,
+                          style: const TextStyle(
+                              fontSize: 16, fontStyle: FontStyle.italic, color: AppColors.merahMuda),
+                        ),
+                      )
+                    ],
                   ),
                   const SizedBox(
                     height: 16,
                   ),
-                  Flexible(
-                    child: Text(
-                        diary.fields.description,
-                        style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.normal),
-                    ),
+                  Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          diary.fields.description,
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.normal),
+                        ),
+                      )
+                    ],
                   ),
                   const Spacer(),
                   ElevatedButton(

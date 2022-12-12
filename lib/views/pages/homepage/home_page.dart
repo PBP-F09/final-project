@@ -190,12 +190,10 @@ class HomePage extends StatelessWidget {
                 const Center(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Flexible(
-                      child: Text(
-                        'HalowBund merupakan sebuah aplikasi dan website yang membantu ribuan Ibu di seluruh Indonesia mengenai pengetahuan motherhood dan juga mengedukasi kesehatan Ibu & Anak',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 1.4),
-                      ),
+                    child: Text(
+                      'HalowBund merupakan sebuah aplikasi dan website yang membantu ribuan Ibu di seluruh Indonesia mengenai pengetahuan motherhood dan juga mengedukasi kesehatan Ibu & Anak',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(height: 1.4),
                     ),
                   ),
                 )
