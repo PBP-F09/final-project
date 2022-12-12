@@ -1,5 +1,8 @@
 # *HalowBund*
 
+## Deployment🚀
+[![Release](https://github.com/PBP-F09/final-project/actions/workflows/release.yml/badge.svg)](https://github.com/PBP-F09/final-project/actions/workflows/release.yml)[![Build status](https://build.appcenter.ms/v0.1/apps/290062bd-09e1-4320-9df5-ede857be92d2/branches/main/badge)](https://appcenter.ms)
+
 ## Deskripsi Aplikasi
 HalowBund merupakan sebuah aplikasi yang dapat membantu ribuan Ibu di seluruh Indonesia mengenai pengetahuan *motherhood* dan juga mengedukasi kesehatan Ibu & Anak di Indonesia. Pada aplikasi ini, Ibu dapat membaca artikel-artikel mengenai pengetahuan keibuan dan juga mengajukan pertanyaan terkait kehamilan dan tumbuh-kembang anak pada forum diskusi dengan berinteraksi dengan dokter spesialis, perawat, atau Ibu lainnya. Selain itu, Ibu juga dapat mencari informasi terkait tempat dan waktu dilaksanakannya kegiatan posyandu dan imunisasi di lingkungan terdekatnya.
 
