@@ -8,7 +8,8 @@ void login(
   mounted,
 ) async {
   // 'username' and 'password' should be the values of the user login form.
-  final response = await request.login('https://halowbund.up.railway.app/account/login-flutter/', {
+  final response =
+      await request.login('http://10.0.2.2:8000/account/login-flutter/', {
     'username': username,
     'password': password,
   });
@@ -16,6 +17,7 @@ void login(
   if (request.loggedIn) {
     // Code here will run if the login succeeded.
     request.jsonData = response['data'];
+    print(request.jsonData['role_user']);
     Navigator.pushNamedAndRemoveUntil(
       context,
       RoutesName.home,

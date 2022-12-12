@@ -7,12 +7,18 @@ class AnswerCard extends StatelessWidget {
     required this.role,
     required this.datetime,
     required this.text,
+    this.request,
+    required this.answerId,
+    required this.notifyParent,
   });
 
   final String username;
   final String role;
   final String datetime;
   final String text;
+  final request;
+  final int answerId;
+  final Function() notifyParent;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +47,7 @@ class AnswerCard extends StatelessWidget {
                     width: 7,
                   ),
                   Text(
-                    '$username',
+                    username,
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(
@@ -54,7 +60,7 @@ class AnswerCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      '$role',
+                      role,
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -66,11 +72,24 @@ class AnswerCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Icon(
-                Icons.delete,
-                size: 20,
-                color: Colors.brown,
-              )
+              if (username == request.jsonData['username'] || request.jsonData['role_user'] == 'Admin')
+                IconButton(
+                  icon: const Icon(
+                    Icons.delete,
+                    size: 25,
+                    color: Colors.brown,
+                  ),
+                  onPressed: () async {
+                    final res = await deleteAnswer(
+                      request.jsonData['pk_user'],
+                      request.jsonData['role_user'],
+                      answerId,
+                    );
+                    // ignore: use_build_context_synchronously
+                    showTopFlash('Successfully deleted answer.', context);
+                    notifyParent();
+                  },
+                )
             ],
           ),
           const SizedBox(
@@ -80,7 +99,7 @@ class AnswerCard extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: Flexible(
               child: Text(
-                '$text',
+                text,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),

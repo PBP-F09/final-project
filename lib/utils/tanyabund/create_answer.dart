@@ -1,8 +1,8 @@
 part of '_tanyabund.dart';
 
 Future<int> createAnswer(text, uid, role, qid) async {
-  final url =
-      Uri.parse('https://halowbund.up.railway.app/qna/answer-flutter/$uid/$role/$qid');
+  // final url = Uri.parse('https://halowbund.up.railway.app/qna/answer-flutter/$uid/$role/$qid');
+  final url = Uri.parse('http://10.0.2.2:8000/qna/answer-flutter/$uid/$role/$qid');
   final headers = {'Content-type': 'application/json'};
   final response = await http.post(url,
       headers: headers,

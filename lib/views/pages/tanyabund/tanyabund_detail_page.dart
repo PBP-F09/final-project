@@ -17,6 +17,11 @@ class TanyaBundDetailPage extends HookWidget {
     final future = useMemoized(fetchData, [reloadKey.value]);
     final snapshot = useFuture(future);
     final request = context.watch<CookieRequest>();
+    void refresh() {
+      totalAnswer.value--;
+      reloadKey.value = UniqueKey();
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -131,59 +136,81 @@ class TanyaBundDetailPage extends HookWidget {
                           color: Colors.black,
                           onPressed: () {
                             showModalBottomSheet(
+                              isScrollControlled: true,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(25)),
+                              ),
                               context: context,
                               builder: (context) {
-                                return Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  color: AppColors.merahMuda,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 40,
-                                      horizontal: 30,
+                                return Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 650,
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.merahMuda,
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(25)),
                                     ),
-                                    child: Column(
-                                      children: [
-                                        const Text(
-                                          'Write your answer here',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 10,
-                                          ),
-                                          child: Expanded(
-                                            child: MultiLineTextField(
-                                              label: '',
-                                              maxLines: 10,
-                                              bordercolor: AppColors.white,
-                                              controller: answerController,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 40,
+                                        horizontal: 30,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          const Text(
+                                            'Write your answer here',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                        ),
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            totalAnswer.value =
-                                                await createAnswer(
-                                              answerController.text,
-                                              request.jsonData['pk_user'],
-                                              request.jsonData['role_user'],
-                                              data.pk,
-                                            );
-                                            reloadKey.value = UniqueKey();
-                                            answerController.clear();
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text(
-                                            'Send',
-                                            style: TextStyle(fontSize: 24),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10,
+                                            ),
+                                            child: Expanded(
+                                              child: MultiLineTextField(
+                                                label: '',
+                                                maxLines: 10,
+                                                bordercolor: AppColors.white,
+                                                controller: answerController,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColors.creamTua,
+                                            ),
+                                            onPressed: () async {
+                                              totalAnswer.value =
+                                                  await createAnswer(
+                                                answerController.text,
+                                                request.jsonData['pk_user'],
+                                                request.jsonData['role_user'],
+                                                data.pk,
+                                              );
+                                              reloadKey.value = UniqueKey();
+                                              answerController.clear();
+                                              // ignore: use_build_context_synchronously
+                                              Navigator.pop(context);
+                                              // ignore: use_build_context_synchronously
+                                              showTopFlash(
+                                                'Successfully posted answer.',
+                                                context,
+                                              );
+                                            },
+                                            child: const Text(
+                                              'Send',
+                                              style: TextStyle(fontSize: 24),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );
@@ -191,11 +218,20 @@ class TanyaBundDetailPage extends HookWidget {
                             );
                           },
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.delete),
-                          color: Colors.brown,
-                          onPressed: () {},
-                        ),
+                        if (request.jsonData['username'] == data.user ||
+                            request.jsonData['role_user'] == 'Admin')
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            color: Colors.brown,
+                            onPressed: () async {
+                              await deleteQuestion(
+                                request.jsonData['pk_user'],
+                                request.jsonData['role_user'],
+                                data.pk,
+                              );
+                              Navigator.pop(context);
+                            },
+                          ),
                       ],
                     ),
                     const Divider(
@@ -222,6 +258,9 @@ class TanyaBundDetailPage extends HookWidget {
                                 text: snapshot.data![index].text,
                                 datetime: DateFormat.yMMMd()
                                     .format(snapshot.data![index].date),
+                                request: request,
+                                answerId: snapshot.data![index].pk,
+                                notifyParent: refresh,
                               );
                             },
                           )

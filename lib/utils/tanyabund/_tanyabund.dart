@@ -6,7 +6,8 @@ import '../../models/tanyabund/answer_model.dart';
 
 part 'fetch_question.dart';
 part 'fetch_answer.dart';
-part 'like_answer.dart';
+part 'like_question.dart';
 part 'create_question.dart';
 part 'create_answer.dart';
 part 'delete_answer.dart';
+part 'delete_question.dart';
