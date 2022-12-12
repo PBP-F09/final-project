@@ -56,7 +56,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
               future: getDiary(request, username),
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: const SpinKitProgressIndicator());
                 } else {
                   if (!snapshot.hasData) {
                     return Column(

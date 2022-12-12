@@ -16,7 +16,51 @@ class DiaryDetails extends StatelessWidget {
                   padding: EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
                     onTap: () {
-                      deleteDiary(request, diary.pk);
+                      deleteDiary(diary.pk);
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 15,
+                            child: Container(
+                              child: ListView(
+                                padding:
+                                const EdgeInsets.only(top: 20, bottom: 20),
+                                shrinkWrap: true,
+                                children: <Widget>[
+                                  Center(child: const Text('Informasi DiaryBund')),
+                                  Center(child: Text(diary.fields.title)),
+                                  SizedBox(height: 20),
+                                  // TODO: Munculkan informasi yang didapat dari form
+                                  Center(
+                                      child:
+                                      Text('Diary berhasil dihapus!')),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: TextButton(
+                                      child: const Text('Kembali', style: TextStyle(color: Colors.white),),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DiaryBundPage()),
+                                        );
+                                      },
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(AppColors.merahTua),
+                                      ),),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
                     child: Icon(
                       Icons.delete,

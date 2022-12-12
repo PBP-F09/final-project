@@ -6,7 +6,7 @@ void logout(
   BuildContext context,
 ) async {
   // 'username' and 'password' should be the values of the user login form.
-  final response = await request.get('http://10.0.2.2:8000/account/logout-flutter/');
+  final response = await request.get('https://halowbund.up.railway.app/account/logout-flutter/');
   print(response);
   print(request.jsonData['username']);
   // if (request.loggedIn) {
