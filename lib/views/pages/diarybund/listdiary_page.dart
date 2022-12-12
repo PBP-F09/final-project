@@ -50,7 +50,8 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-              child: Row(
+              child: Flex(
+                direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Flexible(child: Text(
@@ -203,7 +204,8 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-              child: Row(
+              child: Flex(
+                direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Flexible(child: Text(
