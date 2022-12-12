@@ -53,7 +53,11 @@ android {
         versionName flutterVersionName
     }
 
+<<<<<<< HEAD
     signingConfigs {
+=======
+     signingConfigs {
+>>>>>>> 4be675dd469974f1fc5bdfcc3679be11ed5c4dea
          release {
                  storeFile file("../../release-keystore.jks")
                  storePassword = "$System.env.KEY_PASSWORD"
