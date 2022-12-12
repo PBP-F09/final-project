@@ -20,6 +20,8 @@ Widget getScreenByName(String name) {
         return const DiaryBundPage();
       case RoutesName.bacaBund:
         return const BacaBundPage();
+      case RoutesName.periksaBund:
+        return const PeriksaBundPage();
       default:
         return const OnboardingPage();
     }
