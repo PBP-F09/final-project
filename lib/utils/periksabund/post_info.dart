@@ -1,7 +1,7 @@
 part of '_periksabund.dart';
 
 void postNote(request, lokasi, tanggal, waktu, kapasitas_balita, username) async {
-  final response = await request.post('http://10.0.2.2:8000/periksa/postJsonNote/', {
+  final response = await request.post('https://halowbund.up.railway.app/periksa/postJsonNote/', {
     "username" : username,
     "lokasi" : lokasi,
     "tanggal" : tanggal,
@@ -12,7 +12,7 @@ void postNote(request, lokasi, tanggal, waktu, kapasitas_balita, username) async
 
 void deleteInfo(int id) async {
   final response = await http.post(
-    Uri.parse('http://10.0.2.2:8000/periksa/deleteinfo/$id'),
+    Uri.parse('https://halowbund.up.railway.app/periksa/deleteinfo/$id'),
   );
   print(response);
 }
