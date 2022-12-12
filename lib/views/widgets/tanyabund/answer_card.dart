@@ -97,10 +97,8 @@ class AnswerCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Flexible(
-              child: Text(
-                text,
-              ),
+            child: Text(
+              text,
             ),
           ),
           const SizedBox(
