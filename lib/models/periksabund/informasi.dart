@@ -8,6 +8,7 @@ String informasiToJson(List<Note> data) =>
 
 class Note {
   Note({
+    required this.id,
     required this.user,
     required this.lokasi,
     required this.tanggal,
@@ -15,6 +16,7 @@ class Note {
     required this.kapasitas_balita,
   });
 
+  int id;
   int user;
   String lokasi;
   String tanggal;
@@ -23,6 +25,7 @@ class Note {
 
 
   factory Note.fromJson(Map<String, dynamic> json) => Note(
+        id: json['id'],
         user: json['user_id'],
         lokasi: json['lokasi'],
         tanggal: json['tanggal'],
@@ -31,6 +34,7 @@ class Note {
       );
 
   Map<String, dynamic> toJson() => {
+        'id':id,
         'user': user,
         'lokasi': lokasi,
         'tanggal': tanggal,

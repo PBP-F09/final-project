@@ -65,9 +65,8 @@ class HomePage extends StatelessWidget {
                           color: AppColors.merahTua,
                         ),
                         child: IconButton(
-                          onPressed: () {
-                            print(request.jsonData['username']);
-                            logout(request, context);
+                          onPressed: () async {
+                            logout(request);
                             Navigator.pushNamedAndRemoveUntil(
                                 context, RoutesName.login, (route) => false);
                           },

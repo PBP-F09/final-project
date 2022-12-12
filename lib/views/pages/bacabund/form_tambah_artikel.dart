@@ -20,6 +20,7 @@ class _FormTambahArtikelState extends State<FormTambahArtikel> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tambah Artikel Baru'),
+        backgroundColor: Colors.red,
       ),
       body: Form(
         key: _formKey,

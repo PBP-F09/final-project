@@ -3,6 +3,7 @@ class RoutesName {
   static const catatBund = '/catat_bund';
   static const diaryBund = '/diary_bund';
   static const diaryBundForm = '/diary_bund_form';
+  static const catatBundForm = '/catat_bund_form';
   static const bacaBund = '/baca_bund';
   static const periksaBund = '/periksa_bund';
   static const home = '/home';
