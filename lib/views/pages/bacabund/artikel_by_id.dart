@@ -23,36 +23,37 @@ class _DetailArtikelState extends State<DetailArtikel> {
       appBar: AppBar(title: const Text('Detail Artikel')),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(children: [
-          Center(
-            child: Text(
-              widget.title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                widget.title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 12),
-          Flexible(
+            const SizedBox(height: 12),
+            Flexible(
               child: SingleChildScrollView(
-            child: Text(widget.body),
-          )),
-          const SizedBox(height: 8),
-          Row(children: [
-            const Text('Author: ',
-                style: TextStyle(fontWeight: FontWeight.w700)),
-            Text(widget.author.toString()),
-          ]),
-          const SizedBox(height: 8),
-          Row(children: [
-            const Text('Created: ',
-                style: TextStyle(fontWeight: FontWeight.w700)),
-            Text(widget.date),
-          ]),
-          const SizedBox(height: 40),
-        ]),
+                child: Text(widget.body),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                const Text(
+                  'Created: ',
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+                Text(widget.date),
+              ],
+            ),
+            const SizedBox(height: 40),
+          ],
+        ),
       ),
       floatingActionButton: Container(
         margin: const EdgeInsets.only(left: 30),
