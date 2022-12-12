@@ -68,6 +68,8 @@ class HomePage extends StatelessWidget {
                           onPressed: () {
                             print(request.jsonData['username']);
                             logout(request, context);
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, RoutesName.login, (route) => false);
                           },
                           icon: const Icon(
                             Icons.logout,
