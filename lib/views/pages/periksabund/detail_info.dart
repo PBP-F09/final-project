@@ -68,7 +68,7 @@ class DetailInfo extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Kembali'),
           style: ElevatedButton.styleFrom(
-            primary: Colors.red,
+            primary: AppColors.merahMuda,
           ),
           onPressed: () {
             Navigator.pushReplacement(
@@ -139,7 +139,7 @@ class DetailInfo extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.red),
+                backgroundColor: MaterialStateProperty.all(AppColors.merahMuda),
               )
             ),
             const SizedBox(height: 40),
@@ -151,7 +151,7 @@ class DetailInfo extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Kembali'),
           style: ElevatedButton.styleFrom(
-            primary: Colors.red,
+            primary: AppColors.merahMuda,
           ),
           onPressed: () {
             Navigator.pushReplacement(

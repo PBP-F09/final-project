@@ -28,7 +28,7 @@ class _MyInformasiState extends State<MyInformasi> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Halow, $username!",
+                  'Halow, $username!',
                   style:
                   TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -39,9 +39,9 @@ class _MyInformasiState extends State<MyInformasi> {
             padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
                 Flexible(child: Text(
-                  "Bagaimana rutinitas Bunda dan Si Kecil hari ini? Yuk, ceritakan sekarang juga~",
+                  'Bagaimana rutinitas Bunda dan Si Kecil hari ini? Yuk, ceritakan sekarang juga~',
                   style:
                   TextStyle(fontSize: 16),
                 ),)
@@ -52,7 +52,7 @@ class _MyInformasiState extends State<MyInformasi> {
               FutureBuilder(
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: SpinKitProgressIndicator());
                 } else {
                   if (!snapshot.hasData) {
                     return Column(

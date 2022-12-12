@@ -11,6 +11,7 @@ class TanyaBundPage extends HookWidget {
     final future = useMemoized(fetchQuestion, [reloadKey.value]);
     final snapshot = useFuture(future);
     final request = context.watch<CookieRequest>();
+    final role = request.jsonData['role_user'];
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.merahMuda,
@@ -42,12 +43,15 @@ class TanyaBundPage extends HookWidget {
                     ),
                     child: Column(
                       children: [
-                        const Text(
-                          'What do you wanna ask, Bund?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'What do you wanna ask, $role?',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Padding(
@@ -90,86 +94,6 @@ class TanyaBundPage extends HookWidget {
             );
           },
         ),
-        // bottomNavigationBar: Container(
-        //   width: double.infinity,
-        //   height: 50,
-        //   decoration: const BoxDecoration(
-        //     borderRadius: BorderRadius.only(
-        //       topLeft: Radius.circular(200),
-        //       topRight: Radius.circular(200),
-        //     ),
-        //     color: AppColors.merahMuda,
-        //   ),
-        //   child: GestureDetector(
-        //     onTap: () {
-        //       showModalBottomSheet(
-        //         context: context,
-        //         builder: (context) {
-        //           return Container(
-        //             width: double.infinity,
-        //             height: double.infinity,
-        //             color: AppColors.merahMuda,
-        //             child: Padding(
-        //               padding: const EdgeInsets.symmetric(
-        //                 vertical: 40,
-        //                 horizontal: 30,
-        //               ),
-        //               child: Column(
-        //                 children: [
-        //                   const Text(
-        //                     'What do you wanna ask, Bund?',
-        //                     style: TextStyle(
-        //                       color: Colors.white,
-        //                       fontSize: 18,
-        //                       fontWeight: FontWeight.bold,
-        //                     ),
-        //                   ),
-        //                   Padding(
-        //                     padding: const EdgeInsets.symmetric(vertical: 10),
-        //                     child: Expanded(
-        //                       child: MultiLineTextField(
-        //                         label: '',
-        //                         maxLines: 10,
-        //                         bordercolor: AppColors.white,
-        //                         controller: questionController,
-        //                       ),
-        //                     ),
-        //                   ),
-        //                   ElevatedButton(
-        //                     onPressed: () async {
-        //                       await createQuestion(
-        //                         questionController.text,
-        //                         request.jsonData['role_user'],
-        //                         request.jsonData['pk_user'],
-        //                       );
-        //                       reloadKey.value = UniqueKey();
-        //                       Navigator.pop(context);
-        //                       showTopFlash('Successfully created question.', context);
-        //                     },
-        //                     child: const Text(
-        //                       'Send',
-        //                       style: TextStyle(fontSize: 24),
-        //                     ),
-        //                   ),
-        //                 ],
-        //               ),
-        //             ),
-        //           );
-        //         },
-        //       );
-        //     },
-        //     child: Center(
-        //       child: Container(
-        //         padding: EdgeInsets.all(8),
-        //         child: const Text(
-        //           'Add question',
-        //           style: TextStyle(color: AppColors.merahMuda),
-        //         ),
-        //         color: AppColors.creamMuda,
-        //       ),
-        //     ),
-        //   ),
-        // ),
         body: SafeArea(
           child: Column(
             children: [
