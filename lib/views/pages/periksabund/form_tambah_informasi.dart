@@ -10,16 +10,19 @@ class FormTambahInformasi extends StatefulWidget {
 
 class _FormTambahInformasiState extends State<FormTambahInformasi> {
   final _formKey = GlobalKey<FormState>();
-  String _title = '';
-  String _body = '';
-  String _date = '';
+  String lokasi = '';
+  String tanggal = '';
+  String waktu = '';
+  String kapasitas_balita = '';
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     // final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Tambah Informasi'),
+          backgroundColor: AppColors.merahMuda,
         ),
         body: Form(
           key: _formKey,
@@ -32,8 +35,8 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'C',
-                          labelText: 'Judul Artikel',
+                          hintText: 'RS Pondok Indah',
+                          labelText: 'Lokasi',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -41,13 +44,13 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                         // Menambahkan behavior saat nama diketik
                         onChanged: (String? value) {
                           setState(() {
-                            _title = value!;
+                            lokasi = value!;
                           });
                         },
                         // Menambahkan behavior saat data disimpan
                         onSaved: (String? value) {
                           setState(() {
-                            _title = value!;
+                            lokasi = value!;
                           });
                         },
                         // Validator sebagai validasi form
@@ -59,79 +62,129 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                         },
                       ),
                     ),
-                    Padding(
+                                        Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                            labelText: 'Isi artikel',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            )),
-                        maxLines: 10,
+                          hintText: '12-04-2022',
+                          labelText: 'Tanggal',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        // Menambahkan behavior saat nama diketik
                         onChanged: (String? value) {
                           setState(() {
-                            _body = value!;
+                            tanggal = value!;
                           });
                         },
+                        // Menambahkan behavior saat data disimpan
                         onSaved: (String? value) {
                           setState(() {
-                            _body = value!;
+                            tanggal = value!;
                           });
                         },
+                        // Validator sebagai validasi form
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
-                            return 'Isi artikel tidak boleh kosong!';
+                            return 'J';
                           }
                           return null;
                         },
                       ),
                     ),
-                  ],
-                )),
-          ),
-        ),
-        floatingActionButton: Container(
-          alignment: Alignment.bottomCenter,
-          margin: const EdgeInsets.only(left: 30.0),
-          child: TextButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red),
-              padding: MaterialStateProperty.all(
-                const EdgeInsets.all(20.0),
-              ),
-            ),
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // Artikel artikel = Artikel(
-                //   id: 0,
-                //   judul: _title,
-                //   isi: _body,
-                //   tanggal: DateTime.now().toString().substring(0, 10),
-                //   author: 0,
-                // );
-                // print('$_title');
-                // print('$_body');
-                // postArtikel(artikel);
-                // postArtikel2(request, _title, _body, context, mounted);
-                // setState(() {
-                //   _date = DateTime.now().toString().substring(0, 10);
-                // });
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return Dialog(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                                        Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: '20.00 - 21.00',
+                          labelText: 'Waktu',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                        // Menambahkan behavior saat nama diketik
+                        onChanged: (String? value) {
+                          setState(() {
+                            waktu = value!;
+                          });
+                        },
+                        // Menambahkan behavior saat data disimpan
+                        onSaved: (String? value) {
+                          setState(() {
+                            waktu = value!;
+                          });
+                        },
+                        // Validator sebagai validasi form
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'J';
+                          }
+                          return null;
+                        },
                       ),
-                      elevation: 15,
-                      child: Container(
-                        child: ListView(
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Center(
-                                child: Column(
+                    ),
+                                        Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: '5',
+                          labelText: 'Kapasitas Balita',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                        // Menambahkan behavior saat nama diketik
+                        onChanged: (String? value) {
+                          setState(() {
+                            kapasitas_balita = value!;
+                          });
+                        },
+                        // Menambahkan behavior saat data disimpan
+                        onSaved: (String? value) {
+                          setState(() {
+                            kapasitas_balita = value!;
+                          });
+                        },
+                        // Validator sebagai validasi form
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'J';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  TextButton(
+                  child: const Text(
+                    "Simpan",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      postNote(request, lokasi, tanggal, waktu, kapasitas_balita, request.jsonData['username']);
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 15,
+                    child: Container(
+                      child: ListView(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          Center(
+                            child: Column(
                               children: [
                                 const Text(
                                   'Data berhasil disimpan!',
@@ -140,31 +193,44 @@ class _FormTambahInformasiState extends State<FormTambahInformasi> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text('Judul: $_title'),
-                                Text('Isi: $_body'),
-                                Text('Tanggal: $_date'),
+                                Text('Lokasi: $lokasi'),
+                                Text('Waktu: $waktu'),
+                                Text('Tanggal Tersedia: $tanggal'),
+                                Text('Kapasitas Balita: $kapasitas_balita'),
                               ],
-                            )),
-                            const SizedBox(height: 20),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('Kembali'),
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 20),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              // Navigator.pop(context);
+                              // back to page list artikel
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PeriksaBundPage(),
+                                ),
+                              );
+                            },
+                            child: const Text('Kembali'),
+                          ),
+                        ],
                       ),
-                    );
+                    ),
+                  );
+                },
+              );
+                    }
                   },
-                );
-              }
-            },
-            child: const Text(
-              'Simpan',
-              style: TextStyle(color: Colors.white),
-            ),
+                  
+                )
+                
+                
+                  ],
+                )),
           ),
-        ));
+        ),
+    );
   }
 }

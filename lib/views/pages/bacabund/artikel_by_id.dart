@@ -20,7 +20,10 @@ class _DetailArtikelState extends State<DetailArtikel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Detail Artikel')),
+      appBar: AppBar(
+        title: const Text('Detail Artikel'),
+        backgroundColor: Colors.red,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
