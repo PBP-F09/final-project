@@ -2,11 +2,18 @@ part of '_tanyabund.dart';
 
 class TanyaBundPage extends HookWidget {
   TanyaBundPage({super.key});
+class TanyaBundPage extends HookWidget {
+  TanyaBundPage({super.key});
 
+  final questionController = TextEditingController();
   final questionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final reloadKey = useState(UniqueKey());
+    final future = useMemoized(fetchQuestion, [reloadKey.value]);
+    final snapshot = useFuture(future);
+    final request = context.watch<CookieRequest>();
     final reloadKey = useState(UniqueKey());
     final future = useMemoized(fetchQuestion, [reloadKey.value]);
     final snapshot = useFuture(future);
