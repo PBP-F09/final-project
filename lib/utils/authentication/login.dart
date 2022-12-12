@@ -9,7 +9,7 @@ void login(
 ) async {
   // 'username' and 'password' should be the values of the user login form.
   final response =
-      await request.login('https://halowbund.up.railway/account/login-flutter/', {
+      await request.login('https://halowbund.up.railway.app/account/login-flutter/', {
     'username': username,
     'password': password,
   });
