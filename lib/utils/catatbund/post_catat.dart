@@ -16,12 +16,29 @@
 
 part of '_catatbund.dart';
 
-void postCatat(request, String weight, String height, BuildContext context, mounted) async {
-  print("enggaaa");
-  final response = await request.login('http://localhost:8000/catatbund/create-ajax-flutter/', {
-    'weight': weight,
-    'height': height,
-  });
+Future<List<Catat>> postCatat(request, double weight, double height, BuildContext context, mounted, String username) async {
+  
+  final response = await http.post(Uri.parse('http://10.0.2.2:8000/catatbund/add_request_flutter/'),
+      headers: <String, String>{
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      body: jsonEncode(<String, dynamic>{
+        'username' : username,
+        'weight': weight,
+        'height': height,
+      }));
 
-  print(response);
+      // melakukan decode response menjadi bentuk json
+  var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+  // melakukan konversi data json menjadi object ToDo
+  List<Catat> listCatat = [];
+  for (var d in data) {
+    if (d != null) {
+      listCatat.add(Catat.fromJson(d));
+    }
+  }
+  print(listCatat.toString()+"haha");
+  return listCatat;
+
 }

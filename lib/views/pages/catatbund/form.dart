@@ -141,7 +141,9 @@ class _CatatFormState extends State<CatatForm> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Fields newField = new Fields(user: user, date: date, title: _title, emotion: emotionInt, fieldsAbstract: _shortdesc, description: _longdesc);
-                      postCatat(request, _weight, _height, context, mounted);
+                      String username = request.jsonData['username'];
+                     
+                      postCatat(request, double.parse(_weight), double.parse(_height), context, mounted, username);
                       showDialog(
                         context: context,
                         builder: (context) {
