@@ -1,8 +1,10 @@
-import 'package:endterm_project/main.dart';
-import 'package:endterm_project/routes/routes_name.dart';
-import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'package:endterm_project/utils/_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
+import '../../../routes/routes_name.dart';
 import '../../widgets/globals/_globals.dart';
 
 part 'home_page.dart';
