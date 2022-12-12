@@ -15,10 +15,10 @@ class _BacaBundPageState extends State<BacaBundPage> {
     final request = context.watch<CookieRequest>();
     String? username = request.jsonData['username'];
     String? role_user = request.jsonData['role_user'];
-    print(role_user);
     return Scaffold(
       appBar: AppBar(
         title: const Text('BacaBund'),
+        backgroundColor: Colors.red,
       ),
       body: FutureBuilder(
         future: getArtikel(),
@@ -73,6 +73,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
               },
               icon: const Icon(Icons.add),
               label: const Text('Tambah Artikel'),
+              backgroundColor: Colors.red,
             )
           : Container(),
     );
