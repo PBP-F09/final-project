@@ -19,6 +19,16 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
     if (role_user == "bumil" || role_user == "Bunda") {
       return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage()),
+                );
+            },
+            icon: Icon(Icons.arrow_back_ios),
+          ),
           title: Text('DiaryBund'),
           backgroundColor: AppColors.merahMuda,
         ),
@@ -73,7 +83,7 @@ class _DiaryBundPageState extends State<DiaryBundPage> {
                     ListView.builder(
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          int reverseIndex = ListDiary.list.length - 1 - index;
+                          int reverseIndex = snapshot.data!.length - 1 - index;
                           String emotionString = "";
                           if (snapshot.data![reverseIndex].fields.emotion == 1) {
                             emotionString = 'Senang';

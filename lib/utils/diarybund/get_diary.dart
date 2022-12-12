@@ -11,16 +11,16 @@ Future<List<Diary>> getDiary(String username) async {
   );
 
   // melakukan decode response menjadi bentuk json
-  print(utf8.decode(response.bodyBytes));
+  // print(utf8.decode(response.bodyBytes));
   var data = jsonDecode(utf8.decode(response.bodyBytes));
 
   // melakukan konversi data json menjadi object Catat
   List<Diary> listCatat = [];
   for (var d in data) {
-    print("masuk");
+    // print("masuk");
     if (d != null) {
       // print("sini");
-      print(Diary.fromJson(d));
+      // print(Diary.fromJson(d));
       listCatat.add(Diary.fromJson(d));
     }
   }

@@ -13,6 +13,7 @@ import '../../../utils/diarybund/_diarybund.dart';
 import '../../../routes/routes_name.dart';
 import '../../widgets/globals/_globals.dart';
 import '../authentication/_authentication.dart';
+import '../homepage/_homepage.dart';
 
 part 'listdiary_page.dart';
 part 'form.dart';
