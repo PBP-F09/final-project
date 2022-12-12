@@ -19,6 +19,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('BacaBund'),
+        backgroundColor: Colors.red,
       ),
       body: FutureBuilder(
         future: getArtikel(),
@@ -73,6 +74,7 @@ class _BacaBundPageState extends State<BacaBundPage> {
               },
               icon: const Icon(Icons.add),
               label: const Text('Tambah Artikel'),
+              backgroundColor: Colors.red,
             )
           : Container(),
     );
