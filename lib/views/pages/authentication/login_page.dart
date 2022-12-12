@@ -170,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_loginFormKey.currentState!.validate()) {
+                            print(request);
                             login(request, username, password, context, mounted);
                           }
                         },

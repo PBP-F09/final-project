@@ -1,7 +1,7 @@
 part of '_periksabund.dart';
 
 Future<List<Note>> getNote(request) async {
-  final response = await request.get('http://10.0.2.2:8000/periksa/getJsonNote/');
+  final response = await request.get('https://halowbund.up.railway.app/periksa/getJsonNote/');
   List<Note> informasi = [];
   for (var d in response['data']) {
     if (d != null) {

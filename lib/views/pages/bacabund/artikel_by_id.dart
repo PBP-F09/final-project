@@ -22,7 +22,7 @@ class _DetailArtikelState extends State<DetailArtikel> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Artikel'),
-        backgroundColor: Colors.red,
+        backgroundColor: AppColors.merahMuda,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -62,7 +62,7 @@ class _DetailArtikelState extends State<DetailArtikel> {
         margin: const EdgeInsets.only(left: 30),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.red,
+            backgroundColor: AppColors.merahMuda,
             minimumSize: const Size.fromHeight(40), // NEW
           ),
           onPressed: () {

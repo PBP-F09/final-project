@@ -1,6 +1,3 @@
-
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:endterm_project/utils/periksabund/_periksabund.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../../models/periksabund/informasi.dart';
 import '../../../utils/_utils.dart';
+import '../../widgets/globals/_globals.dart';
 
 // import 'package:provider/provider.dart';
 // import 'package:pbp_django_auth/pbp_django_auth.dart';

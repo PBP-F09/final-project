@@ -1,3 +1,5 @@
+import 'package:endterm_project/utils/globals/_globals.dart';
+import 'package:endterm_project/views/widgets/globals/_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:endterm_project/utils/bacabund/_bacabund.dart';
 import 'package:endterm_project/models/bacabund/artikel.dart';

@@ -1,4 +1,5 @@
 import 'package:endterm_project/routes/routes_factory.dart';
+import 'package:endterm_project/utils/globals/_globals.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
           return request;
        },
       child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
         title: 'Flutter Demo',
         onGenerateRoute: (settings) {
           return MaterialPageRoute<void>(
